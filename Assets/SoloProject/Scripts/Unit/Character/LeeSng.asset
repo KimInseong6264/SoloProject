@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3480e26ee71ff847b5dee8f15bef5c3, type: 3}
   m_Name: LeeSng
   m_EditorClassIdentifier: Assembly-CSharp::Unit
+  _name: "\uC774\uC0C1"
+  _stat:
+    HP: 10
+    Att: 10
+    Def: 10
+  _skillList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
