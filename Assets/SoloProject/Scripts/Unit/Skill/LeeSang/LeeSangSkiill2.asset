@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3480e26ee71ff847b5dee8f15bef5c3, type: 3}
-  m_Name: LeeSng
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  _name: "\uC774\uC0C1"
-  _stat:
-    HP: 10
-    Att: 10
-    Def: 10
-  _skillList:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e5d2a33e6085e2b4084792a33242e823, type: 3}
+  m_Name: LeeSangSkiill2
+  m_EditorClassIdentifier: Assembly-CSharp::Skill
+  _skillName: 
+  _coinCount: 0
+  _coinValue: 0
