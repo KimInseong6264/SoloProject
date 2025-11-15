@@ -1,18 +1,29 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CoinSystem
 {
-    public event Action<Skill> OnCoinToss;
+    public List<CoinType> TossResult;
+    public int ClashPower;
 
-    public List<CoinType> CoinToss(Skill skill)
+    public IEnumerator GetCoinToss(Skill skill)
     {
-        Random coinToss = new Random();
-        List<CoinType> result = new List<CoinType>();
+        WaitForSeconds wait = new WaitForSeconds(15 / skill.CoinCount);
+        int random;
 
         for (int i = 0; i < skill.CoinCount; i++)
-            result.Add((CoinType)coinToss.Next(0, 2));  // 코인토스의 결과를 해당 유닛의 TossList에 차곡차곡 담는다.
+        {
+            random = Random.Range(0, 2);
+            TossResult.Add((CoinType)random);
+            ClashPower += random * skill.CoinValue;
+            yield return wait;
+        }
+    }
 
-        return result;
+    public void GetReset()
+    {
+        TossResult.Clear();
+        ClashPower = 0;
     }
 }
