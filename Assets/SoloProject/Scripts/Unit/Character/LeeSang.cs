@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class LeeSang : MonoBehaviour
 {
-    [SerializeField] private Unit _unit;
-
+    [field: SerializeField] public Unit UnitData { get; private set; }
 
 }

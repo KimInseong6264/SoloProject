@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
 
     // ΩÃ±€≈Ê ∆–≈œ
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = GetComponent<GameManager>();
+            Instance = GetComponent<GameManager>();
 
             DontDestroyOnLoad(gameObject);
         }
