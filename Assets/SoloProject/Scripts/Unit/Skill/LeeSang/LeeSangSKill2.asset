@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7323a37a548271488557a4537cb694b, type: 3}
   m_Name: LeeSangSKill2
   m_EditorClassIdentifier: Assembly-CSharp::LeeSangSKill1
-  <SkillName>k__BackingField: 
-  <CoinCount>k__BackingField: 0
-  <BasicSkillValue>k__BackingField: 0
-  <CoinValue>k__BackingField: 0
+  <SkillName>k__BackingField: "\uC624\uAC10\uB3C4"
+  <CoinCount>k__BackingField: 3
+  <BasicSkillValue>k__BackingField: 3
+  <CoinValue>k__BackingField: 4
