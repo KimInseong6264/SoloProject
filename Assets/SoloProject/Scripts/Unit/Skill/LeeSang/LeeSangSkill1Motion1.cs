@@ -35,8 +35,8 @@ public class LeeSangSkill1Motion1 : ISkillMotion
 
     public void Update()
     {
-        // DamageSystem에서 메서드 빌려와서 코루틴 실행
-        DamageSystem system = BattleManager.Instance.Damage;
+        // BattleManager에서 메서드 빌려와서 코루틴 실행
+        BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());
     }
 

@@ -34,6 +34,7 @@ public class Faust : MonoBehaviour, IUnit
         int[] coinValue = { _unit.SkillList[0].CoinValue, _unit.SkillList[1].CoinValue };
 
         SkillList.Add(new FaustSkill1(skillName[0], coinCount[0], basicSkillValue[0], coinValue[0]));
+        SkillList.Add(new FaustSkill1(skillName[1], coinCount[1], basicSkillValue[1], coinValue[1]));
     }
 
     public void TakeDamage(int damage)

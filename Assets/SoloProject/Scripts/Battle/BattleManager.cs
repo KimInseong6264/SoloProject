@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 // 합 이후 데미지 관련 클래스
@@ -17,4 +17,9 @@ public class BattleManager : MonoBehaviour
         Damage = GetComponent<DamageSystem>();
     }
 
+    // 스킬모션에 StartCoroutine을 임시로 부여
+    public void GetMotionPlay(IEnumerator skillMotion)
+    {
+        StartCoroutine(skillMotion);
+    }
 }

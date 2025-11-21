@@ -8,12 +8,6 @@ public class DamageSystem : MonoBehaviour
         BattleManager.Instance.Clash.OnDamageStep += GetDamageStep;
     }
 
-    // 스킬모션에 StartCoroutine을 임시로 부여
-    public void GetMotionPlay(IEnumerator skillMotion)
-    {
-        StartCoroutine(skillMotion);
-    }
-
     // 스킬 데미지 계산 + 모션 시작
     private void GetDamageStep(UnitType unit)
     {
