@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ce5942afa2aa240974c7664ad5a092, type: 3}
   m_Name: LeeSng
   m_EditorClassIdentifier: Assembly-CSharp::Unit
-  <Name>k__BackingField: 
-  <Stat>k__BackingField:
+  <InitialName>k__BackingField: "\uC774\uC0C1"
+  <InitialStat>k__BackingField:
     HP: 0
     Att: 0
     Def: 0
-  <SkillList>k__BackingField: []
+  <SkillList>k__BackingField:
+  - {fileID: 11400000, guid: dbc31a02f57cdd74c924d60cee46daa6, type: 2}
+  - {fileID: 11400000, guid: bf41a9161b4ce1f419970a7482e7c905, type: 2}

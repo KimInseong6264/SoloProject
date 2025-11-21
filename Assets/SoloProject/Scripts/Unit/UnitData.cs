@@ -8,7 +8,8 @@ public class UnitData : ScriptableObject
 
     [field: SerializeField] public string InitialName { get; private set; }
     [field: SerializeField] public UnitStat InitialStat { get; private set; }
-    [field: SerializeField] public List<Skill> InitialSkillList { get; private set; }
+
+    [field: SerializeField] public List<SkillData> SkillList {  get; private set; }
 
 
 }

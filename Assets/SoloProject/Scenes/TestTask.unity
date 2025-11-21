@@ -427,6 +427,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &508824063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508824065}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508824065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508824063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +519,6 @@ GameObject:
   - component: {fileID: 1260726685}
   - component: {fileID: 1260726684}
   - component: {fileID: 1260726683}
-  - component: {fileID: 1260726682}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -496,19 +526,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1260726682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260726681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff50ca4bbd0093469558ff8cafea118, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LeeSang
-  _unit: {fileID: 0}
 --- !u!136 &1260726683
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -725,6 +742,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2115453537}
   - component: {fileID: 2115453538}
+  - component: {fileID: 2115453541}
+  - component: {fileID: 2115453542}
+  - component: {fileID: 2115453540}
   - component: {fileID: 2115453539}
   m_Layer: 0
   m_Name: ClashManager
@@ -755,7 +775,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115453535}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c15366e5ca45a794685bf1e74946ec5a, type: 3}
   m_Name: 
@@ -767,11 +787,49 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115453535}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5bc0bdec9d3074d962bd02801bcb32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Faust
+  _unit: {fileID: 11400000, guid: b3544cf6dd8d6fd4ebf322d79a341e7f, type: 2}
+--- !u!114 &2115453540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115453535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff50ca4bbd0093469558ff8cafea118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeeSang
+  _unit: {fileID: 11400000, guid: 314290fb01db33a47b2bb2c19e8d9903, type: 2}
+--- !u!114 &2115453541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115453535}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88bba86f0fc7af04e95018ad3948aef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClashSystem
+--- !u!114 &2115453542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115453535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809bfa17aa385ec4f9305add5423cdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageSystem
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -783,3 +841,4 @@ SceneRoots:
   - {fileID: 1644981959}
   - {fileID: 1260726686}
   - {fileID: 2115453537}
+  - {fileID: 508824065}

@@ -6,8 +6,9 @@ using UnityEngine;
 // 1. 생성자 이름
 // 2. MotionList갱신
 // 3. 모션 추가시, MotionList에 추가
-public class LeeSangSKill1 : SkillStatePattern, ISkill
+public class FaustSkill1 : SkillStatePattern, ISkill
 {
+
     public string SkillName { get; private set; }
     public int CoinCount { get; private set; }
     public int BasicSkillValue { get; private set; }
@@ -15,7 +16,7 @@ public class LeeSangSKill1 : SkillStatePattern, ISkill
 
 
     // 생성자
-    public LeeSangSKill1(string skillName, int coinCount, int basicSkillValue, int coinValue)
+    public FaustSkill1(string skillName, int coinCount, int basicSkillValue, int coinValue)
     {
         Init(skillName, coinCount, basicSkillValue, coinValue);
     }
@@ -37,8 +38,8 @@ public class LeeSangSKill1 : SkillStatePattern, ISkill
     private void SetMotion()
     {
         MotionList = new Dictionary<Motion, ISkillMotion>();
-        MotionList.Add(Motion.First, new LeeSangSkill1Motion1(this));
-        MotionList.Add(Motion.Second, new LeeSangSkill1Motion2(this));
+        MotionList.Add(Motion.First, new FaustSkill1Motion1(this));
+        MotionList.Add(Motion.Second, new FaustSkill1Motion2(this));
         SetMotion(Motion.First);
     }
 }

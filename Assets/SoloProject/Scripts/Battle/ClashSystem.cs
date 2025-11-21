@@ -5,24 +5,35 @@ using UnityEngine;
 // 합 관련 클래스
 public class ClashSystem : MonoBehaviour
 {
-    private CoinSystem _playerCoin = new();
-    private CoinSystem _enemyCoin = new();
+    public CoinSystem PlayerCoin { get; private set; } = new();
+    public CoinSystem EnemyCoin { get; private set; } = new();
 
-    public IUnit[] BattleUnit { get; set; } = new IUnit[2];
-    public ISkill[] BattleSkill { get; set; } = new ISkill[2];
+    public IUnit[] BattleUnit { get; private set; } = new IUnit[2];
+    public ISkill[] BattleSkill { get; private set; } = new ISkill[2];
+    
 
 
-
+    // BattleSystem이 구독
     public event Action<UnitType> OnDamageStep;
 
 
-    //[SerializeField] Skill skill1;
-    //[SerializeField] Skill skill2;
+    public IUnit LeeSang;
+    public IUnit Faust;
 
-    //private void Start()
-    //{
-    //    Battle(skill1, skill2);
-    //}
+    private void Awake()
+    {
+        LeeSang = GetComponent<LeeSang>();
+        Faust = GetComponent<Faust>();
+    }
+
+    private void Start()
+    {
+        BattleUnit[0] = LeeSang;
+        BattleUnit[1] = Faust;
+        BattleSkill[0] = LeeSang.SkillList[0];
+        BattleSkill[1] = Faust.SkillList[0];
+        Battle();
+    }
 
     public void SetBattle(IUnit unit, ISkill skill, UnitType unitType )
     {
@@ -48,11 +59,11 @@ public class ClashSystem : MonoBehaviour
         int player = (int)UnitType.Player;
         int enemy = (int)UnitType.Enemy;
 
-        StartCoroutine(_playerCoin.GetCoinToss(BattleSkill[player]));
+        StartCoroutine(PlayerCoin.GetCoinToss(BattleSkill[player]));
 
-        StartCoroutine(_enemyCoin.GetCoinToss(BattleSkill[enemy]));
+        StartCoroutine(EnemyCoin.GetCoinToss(BattleSkill[enemy]));
 
-        yield return new WaitUntil(() => _playerCoin.IsDone && _enemyCoin.IsDone);
+        yield return new WaitUntil(() => PlayerCoin.IsDone && EnemyCoin.IsDone);
 
         Debug.Log("합 진행 시간 종료후");
 
@@ -65,20 +76,22 @@ public class ClashSystem : MonoBehaviour
         int player = (int)UnitType.Player;
         int enemy = (int)UnitType.Enemy;
 
-        int playerClash = BattleSkill[player].BasicSkillValue + _playerCoin.ClashPower;
-        int enemyClash = BattleSkill[enemy].BasicSkillValue + _enemyCoin.ClashPower;
+        int playerClash = BattleSkill[player].BasicSkillValue + PlayerCoin.ClashPower;
+        int enemyClash = BattleSkill[enemy].BasicSkillValue + EnemyCoin.ClashPower;
 
         Debug.Log($"캐릭터: {playerClash} / 에너미: {enemyClash}");
 
         if (playerClash > enemyClash)
         {
+            Debug.Log(OnDamageStep);
             OnDamageStep?.Invoke(UnitType.Player);
-            Debug.LogWarning($"캐릭터 승");
+            Debug.Log($"캐릭터 승");
         }
         else if (playerClash < enemyClash)
         {
+            Debug.Log(OnDamageStep);
             OnDamageStep?.Invoke(UnitType.Enemy);
-            Debug.LogWarning("에너미 승");
+            Debug.Log("에너미 승");
         }
         else
         {
@@ -86,7 +99,15 @@ public class ClashSystem : MonoBehaviour
             
         }
 
-        _playerCoin.GetReset();
-        _enemyCoin.GetReset();
+        PlayerCoin.GetReset();
+        EnemyCoin.GetReset();
+    }
+
+    public void GetReset()
+    {
+        PlayerCoin.GetReset();
+        EnemyCoin.GetReset();
+        Array.Clear(BattleUnit, 0, BattleUnit.Length);
+        Array.Clear(BattleSkill, 0, BattleUnit.Length);
     }
 }

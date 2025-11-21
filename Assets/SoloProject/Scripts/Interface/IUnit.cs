@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public interface IUnit
 {
     public UnitStat Stat { get; }
-    public List<Skill> SkillList { get; }
+    public List<ISkill> SkillList { get; }
 
     public void Init();
 

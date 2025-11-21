@@ -14,3 +14,8 @@ public enum UnitType
 {
     Player, Enemy
 }
+
+public enum Motion
+{
+    First, Second, Third, Fourth, End
+}

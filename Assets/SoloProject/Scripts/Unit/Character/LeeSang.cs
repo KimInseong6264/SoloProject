@@ -9,7 +9,7 @@ public class LeeSang : MonoBehaviour, IUnit
 
     public UnitStat Stat { get; private set; }
 
-    public List<Skill> SkillList { get; private set; }
+    public List<ISkill> SkillList { get; private set; }
 
     private void Awake()
     {
@@ -20,7 +20,20 @@ public class LeeSang : MonoBehaviour, IUnit
     {
         Name = _unit.InitialName;
         Stat = _unit.InitialStat;
-        SkillList = _unit.InitialSkillList;
+        InitSkillList();
+    }
+
+    public void InitSkillList()
+    {
+        if (SkillList == null)
+            SkillList = new List<ISkill>();
+
+        string[] skillName = { _unit.SkillList[0].Name, _unit.SkillList[1].Name };
+        int[] coinCount = { _unit.SkillList[0].CoinCount, _unit.SkillList[1].CoinCount };
+        int[] basicSkillValue = { _unit.SkillList[0].BasicSkillValue, _unit.SkillList[1].BasicSkillValue };
+        int[] coinValue = { _unit.SkillList[0].CoinValue, _unit.SkillList[1].CoinValue };
+
+        SkillList.Add(new LeeSangSKill1(skillName[0], coinCount[0], basicSkillValue[0], coinValue[0]));
     }
 
     public void TakeDamage(int damage)

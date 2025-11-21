@@ -8,6 +8,7 @@ public class CoinSystem
     public List<CoinType> TossResult { get; private set; } = new();
     public int ClashPower { get; private set; }
 
+    // 코인토스가 모두 끝나면 True
     public bool IsDone { get; private set; } = false;
 
 
