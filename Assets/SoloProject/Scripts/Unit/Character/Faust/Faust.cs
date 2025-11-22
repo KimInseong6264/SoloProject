@@ -14,15 +14,17 @@ public class Faust : MonoBehaviour, IUnit
     private void Awake()
     {
         Init();
+        InitSkillList();
     }
 
+    // 초기화 메서드
     public void Init()
     {
         Name = _unit.InitialName;
         Stat = _unit.InitialStat;
-        InitSkillList();
     }
 
+    // 스킬 초기화 메서드
     public void InitSkillList()
     {
         if(SkillList == null)
@@ -37,7 +39,10 @@ public class Faust : MonoBehaviour, IUnit
         SkillList.Add(new FaustSkill1(skillName[1], coinCount[1], basicSkillValue[1], coinValue[1]));
     }
 
+    // 데미지를 입는 메서드
     public void TakeDamage(int damage)
     {
     }
+
+    
 }
