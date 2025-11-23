@@ -19,7 +19,18 @@ public class UnitData : ScriptableObject
 [System.Serializable]
 public struct UnitStat
 {
-    public int HP;
-    public int Att;
-    public int Def;
+    public int HP { get; private set; }
+    public int Att { get; private set; }
+    public int Def { get; private set; }
+
+
+    // 리턴한 값을 다시 Stat 프로퍼티에 대입해주어야 한다.( Stat = Stat.SetChangeStat(); )
+    public UnitStat SetChangeStat(int hp = 0, int att = 0, int def = 0)
+    {
+        HP += hp;
+        Att += att;
+        Def += def;
+
+        return this;
+    }
 }

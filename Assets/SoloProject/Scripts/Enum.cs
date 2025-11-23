@@ -19,3 +19,8 @@ public enum Motion
 {
     First, Second, Third, Fourth, End
 }
+
+public enum State
+{
+    Idle, Move, Clash, Attack
+}

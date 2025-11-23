@@ -8,6 +8,11 @@ public class DamageSystem : MonoBehaviour
         BattleManager.Instance.Clash.OnDamageStep += GetDamageStep;
     }
 
+    private void OnDisable()
+    {
+        BattleManager.Instance.Clash.OnDamageStep -= GetDamageStep;
+    }
+
     // 스킬 데미지 계산 + 모션 시작
     private void GetDamageStep(UnitType unit)
     {

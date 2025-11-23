@@ -16,25 +16,6 @@ public class ClashSystem : MonoBehaviour
     // BattleSystem¿Ã ±∏µ∂
     public event Action<UnitType> OnDamageStep;
 
-
-    public IUnit LeeSang;
-    public IUnit Faust;
-
-    private void Awake()
-    {
-        LeeSang = GetComponent<LeeSang>();
-        Faust = GetComponent<Faust>();
-    }
-
-    private void Start()
-    {
-        BattleUnit[0] = LeeSang;
-        BattleUnit[1] = Faust;
-        BattleSkill[0] = LeeSang.SkillList[0];
-        BattleSkill[1] = Faust.SkillList[0];
-        Battle();
-    }
-
     public void SetBattle(IUnit unit, ISkill skill, UnitType unitType )
     {
         BattleUnit[(int)unitType] = unit;

@@ -34,6 +34,8 @@ public class FaustSkill1Motion1 : ISkillMotion
 
     public void Update()
     {
+
+
         // BattleManager에서 메서드 빌려와서 코루틴 실행
         BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());

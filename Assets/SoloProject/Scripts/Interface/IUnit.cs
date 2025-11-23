@@ -6,7 +6,7 @@ public interface IUnit
     public UnitStat Stat { get; }
     public List<ISkill> SkillList { get; }
 
-    public void Init();
+    public void Init(UnitData unit);
 
     public void TakeDamage(int damage);
 }

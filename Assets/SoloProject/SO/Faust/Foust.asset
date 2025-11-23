@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   <InitialName>k__BackingField: "\uD30C\uC6B0\uC6C5"
   <InitialStat>k__BackingField:
-    HP: 0
+    HP: 100
     Att: 0
     Def: 0
   <SkillList>k__BackingField:

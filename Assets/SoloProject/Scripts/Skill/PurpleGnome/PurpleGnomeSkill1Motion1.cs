@@ -6,7 +6,7 @@ using UnityEngine;
 // 2. 모션 추가시, 참조 스킬 MotionList에 추가
 public class PurpleGnomeSill1Motion1 : ISkillMotion
 {
-    private PurpleGnomeSill1 _skill;
+    private PurpleGnomeSkill1 _skill;
     private int _coinCount;
     private int _basicSkillValue;
     private int _coinValue;
@@ -14,7 +14,7 @@ public class PurpleGnomeSill1Motion1 : ISkillMotion
 
 
     // 모션 추가시, MotionList에 생성해야 함
-    public PurpleGnomeSill1Motion1(PurpleGnomeSill1 skill)
+    public PurpleGnomeSill1Motion1(PurpleGnomeSkill1 skill)
     {
         _skill = skill;
         _coinCount = skill.CoinCount;

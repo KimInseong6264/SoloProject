@@ -6,7 +6,7 @@ using UnityEngine;
 // 1. 생성자 이름
 // 2. MotionList갱신
 // 3. 모션 추가시, MotionList에 추가
-public class PurpleGnomeSill1 : SkillStatePattern, ISkill
+public class PurpleGnomeSkill1 : SkillStatePattern, ISkill
 {
 
     public string SkillName { get; private set; }
@@ -16,18 +16,18 @@ public class PurpleGnomeSill1 : SkillStatePattern, ISkill
 
 
     // 생성자
-    public PurpleGnomeSill1(string skillName, int coinCount, int basicSkillValue, int coinValue)
+    public PurpleGnomeSkill1(SkillData skill)
     {
-        Init(skillName, coinCount, basicSkillValue, coinValue);
+        Init(skill);
     }
 
 
-    public void Init(string skillName, int coinCount, int basicSkillValue, int coinValue)
+    public void Init(SkillData skill)
     {
-        SkillName = skillName;
-        CoinCount = coinCount;
-        BasicSkillValue = basicSkillValue;
-        CoinValue = coinValue;
+        SkillName = skill.Name;
+        CoinCount = skill.CoinCount;
+        BasicSkillValue = skill.BasicSkillValue;
+        CoinValue = skill.CoinValue;
 
         if (MotionList == null)
             SetMotion();

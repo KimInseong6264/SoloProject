@@ -16,18 +16,18 @@ public class FaustSkill1 : SkillStatePattern, ISkill
 
 
     // »ý¼ºÀÚ
-    public FaustSkill1(string skillName, int coinCount, int basicSkillValue, int coinValue)
+    public FaustSkill1(SkillData skill)
     {
-        Init(skillName, coinCount, basicSkillValue, coinValue);
+        Init(skill);
     }
 
 
-    public void Init(string skillName, int coinCount, int basicSkillValue, int coinValue)
+    public void Init(SkillData skill)
     {
-        SkillName = skillName;
-        CoinCount = coinCount;
-        BasicSkillValue = basicSkillValue;
-        CoinValue = coinValue;
+        SkillName = skill.Name;
+        CoinCount = skill.CoinCount;
+        BasicSkillValue = skill.BasicSkillValue;
+        CoinValue = skill.CoinValue;
 
         if (MotionList == null)
             SetMotion();

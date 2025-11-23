@@ -14,7 +14,7 @@ public interface ISkill
 
 
     // 스킬 초기화
-    public void Init(string skillName, int coinCount, int basicSkillValue, int coinValue);
+    public void Init(SkillData skill);
 
 
     // 스킬모션 선택

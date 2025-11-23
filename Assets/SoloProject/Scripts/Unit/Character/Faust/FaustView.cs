@@ -10,20 +10,24 @@ public class FaustView : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void OnMove()
+    public void OnMoveAni(float distance)
     {
-        
+        bool IsMove = distance < 1f;
+        _animator.SetBool("Distance", IsMove);
     }
 
-    public void OnSkill(ISkill skill)
+    public void OnSkillAni(int i)
     {
-
+        _animator.SetTrigger("Skill" + i);
     }
 
-    public void OnClash()
+    public void OnClashAni()
     {
-
+        _animator.SetTrigger("Clash");
     }
-
-
+    
+    public void OnIdleAni()
+    {
+        _animator.SetBool("Distance", false);
+    }
 }
