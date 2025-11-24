@@ -22,7 +22,7 @@ public class DamageSystem : MonoBehaviour
         Debug.LogWarning("데미지스텝" + skill);
 
         // 이긴 스킬의 모션 실행
-        skill.UpdateMotion();
+        skill.StartSkillMotion();
     }
 
     public void SetEndDamageStep()

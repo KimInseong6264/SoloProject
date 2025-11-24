@@ -4,6 +4,7 @@ using UnityEngine;
 // 스킬모션 생성시 변동사항
 // 1. 참조 스킬 동기화
 // 2. 모션 추가시, 참조 스킬 MotionList에 추가
+// 3. GetMotion()에서 해당하는 애니메이션 교체
 public class FaustSkill1Motion2 : ISkillMotion
 {
     private FaustSkill1 _skill;
@@ -24,7 +25,9 @@ public class FaustSkill1Motion2 : ISkillMotion
 
     public void Enter()
     {
-
+        // 스킬애니메이션 트리거
+        _skill.GetMotion();
+        Debug.Log("파우스트 2모션 애니메이션");
     }
 
     public void Exit()

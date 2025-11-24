@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class PurpleGnomeSkill1 : SkillStatePattern, ISkill
     public int BasicSkillValue { get; private set; }
     public int CoinValue { get; private set; }
 
+    // 스킬 실행시 해당 모션의 애니메이션을 구독시켜서 재생
+    public event Action<int> OnSkillMotion;
 
     // 생성자
     public PurpleGnomeSkill1(SkillData skill)

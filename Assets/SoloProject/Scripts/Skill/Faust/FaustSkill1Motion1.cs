@@ -4,8 +4,10 @@ using UnityEngine;
 // 스킬모션 생성시 변동사항
 // 1. 참조 스킬 동기화
 // 2. 모션 추가시, 참조 스킬 MotionList에 추가
+// 3. GetMotion()에서 해당하는 애니메이션 교체
 public class FaustSkill1Motion1 : ISkillMotion
 {
+
     private FaustSkill1 _skill;
     private int _coinCount;
     private int _basicSkillValue;
@@ -24,7 +26,9 @@ public class FaustSkill1Motion1 : ISkillMotion
 
     public void Enter()
     {
-
+        // 스킬애니메이션 트리거
+        _skill.GetMotion();
+        Debug.Log("파우스트 1모션 애니메이션");
     }
 
     public void Exit()
@@ -34,8 +38,6 @@ public class FaustSkill1Motion1 : ISkillMotion
 
     public void Update()
     {
-
-
         // BattleManager에서 메서드 빌려와서 코루틴 실행
         BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());
@@ -48,7 +50,7 @@ public class FaustSkill1Motion1 : ISkillMotion
         yield return wait;
 
         _skill.SetMotion(Motion.Second);
-        _skill.UpdateMotion();
+        _skill.StartSkillMotion();
     }
 
 }

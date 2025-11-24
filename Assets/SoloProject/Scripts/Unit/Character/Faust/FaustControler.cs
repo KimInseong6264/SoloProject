@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(FaustView))]
-public class FaustControler : MonoBehaviour
+public class FaustControler : MonoBehaviour, IClickable
 {
     [SerializeField] private UnitData _unit;
     public FaustView FaustView { get; private set; }
-    private FaustModel _faustModel;
 
+    private FaustModel _faustModel;
     private Dictionary<State, IUnitState> _stateList;
     private IUnitState _currentState;
 
@@ -15,7 +16,8 @@ public class FaustControler : MonoBehaviour
     {
         FaustView = GetComponent<FaustView>();
         _faustModel = new FaustModel(_unit);
-
+        
+        // 상태패턴 세팅
         _stateList = new Dictionary<State, IUnitState>();
         _stateList.Add(State.Idle, new FaustIdle(this));
         _stateList.Add(State.Move, new FaustMove(this));
@@ -24,6 +26,19 @@ public class FaustControler : MonoBehaviour
         SetState(State.Idle);
     }
 
+    private void Start()
+    {
+        // 스킬 애니메이션과 스킬 모션(상태패턴)을 연결
+        SetSkillMotion();
+    }
+
+    private void Update()
+    {
+        _currentState.Update();
+    }
+
+
+    // 상태 변환 메서드
     public void SetState(State state)
     {
         _currentState?.Exit();
@@ -31,8 +46,18 @@ public class FaustControler : MonoBehaviour
         _currentState.Enter();
     }
 
-    private void Update()
+    // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
+    private void SetSkillMotion()
     {
-        _currentState.Update();
+        foreach (var skillList in _faustModel.SkillList)
+        {
+            Debug.Log(skillList + "에 구독");
+            skillList.OnSkillMotion += FaustView.OnSkillAni;
+        }
+    }
+
+    public void OnCklick()
+    {
+        BattleManager.Instance.Clash.BattleUnit[(int)UnitType.Player] = _faustModel;
     }
 }

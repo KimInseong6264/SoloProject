@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 // 런타임 중 변화되는 값으로 사용
 public interface ISkill
@@ -12,6 +14,9 @@ public interface ISkill
     // 스킬의 코인 위력(합의 위력과 데미지를 결정)
     public int CoinValue { get; }
 
+    // 각 스킬 애니메이션을 유닛 Controller에서 연결
+    public event Action<int> OnSkillMotion;
+
 
     // 스킬 초기화
     public void Init(SkillData skill);
@@ -21,6 +26,6 @@ public interface ISkill
     public void SetMotion(Motion newMotion);
 
     // 스킬 모션 실행
-    public void UpdateMotion();
+    public void StartSkillMotion();
 
 }

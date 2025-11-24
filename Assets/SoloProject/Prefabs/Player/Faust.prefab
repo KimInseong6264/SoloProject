@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1825107482276189593}
   - component: {fileID: 3742560088861192385}
   - component: {fileID: 6836878807638751573}
+  - component: {fileID: -4662373857592130540}
+  - component: {fileID: -1708275941303091910}
   m_Layer: 0
   m_Name: Faust
   m_TagString: Untagged
@@ -113,3 +115,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4662373857592130540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243831717384786993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20df06014d613354bb67f86ff61b66ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaustView
+--- !u!114 &-1708275941303091910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243831717384786993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d34873a5629388488302018ef317baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaustControler
+  _unit: {fileID: 11400000, guid: b3544cf6dd8d6fd4ebf322d79a341e7f, type: 2}

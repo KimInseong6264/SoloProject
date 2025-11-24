@@ -11,7 +11,7 @@ public class FaustMove : IUnitState
 
     public void Enter()
     {
-        
+        //_faust.FaustView.OnMoveAni();
     }
 
     public void Exit()
