@@ -14,12 +14,15 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
         View = GetComponent<FaustView>();
         UnitModel = new FaustModel(_unit, this);
         UnitModel.SetPos(transform);
+        View.GetHpBar(UnitModel.Stat.HP, _unit.InitialStat.HP);
     }
 
     private void Start()
     {
         // 스킬 애니메이션과 스킬 모션(상태패턴)을 연결
         SetSkillMotion();
+
+        UnitModel.OnChangeHp += View.GetHpBar;
     }
 
     private void Update()

@@ -7,6 +7,7 @@ public class FaustModel : Unit
     public FaustModel(UnitDataSO unit , FaustControler controler)
     {
         Init(unit);
+        _initialStat = unit.InitialStat;
         SkillList = new List<Skill>();
         foreach (var skill in unit.SkillList)
         {

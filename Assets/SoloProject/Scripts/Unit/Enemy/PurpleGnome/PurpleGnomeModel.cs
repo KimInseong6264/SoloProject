@@ -6,6 +6,7 @@ public class PurpleGnomeModel : Unit
     public PurpleGnomeModel(UnitDataSO unit, PurpleGnomeController controller)
     {
         Init(unit);
+        _initialStat = unit.InitialStat;
         SkillList = new List<Skill>();
         foreach (var skill in unit.SkillList)
         {

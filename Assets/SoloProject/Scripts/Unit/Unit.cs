@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Unit
 {
+    protected UnitStat _initialStat;
+
     public string Name { get; protected set; }
 
     public UnitStat Stat { get; protected set; }
@@ -13,6 +16,8 @@ public class Unit
 
     public Dictionary<State, IUnitState> StateList { get; protected set; }
     public IUnitState CurrentState { get; protected set; }
+
+    public event Action<float, float> OnChangeHp;
 
     // 초기화 메서드
     public void Init(UnitDataSO unit)
@@ -30,10 +35,7 @@ public class Unit
         }
     }
 
-    public void SetPos(Transform pos)
-    {
-        CurrentPos = pos;
-    }
+    public void SetPos(Transform pos) => CurrentPos = pos;
 
     public void SetState(State state)
     {
@@ -46,6 +48,9 @@ public class Unit
     public void TakeDamage(int damage)
     {
         Stat = Stat.SetChangeStat(hp: -damage);
-        UnityEngine.Debug.Log(Stat.HP);
+        Debug.Log(Stat);
+        Debug.Log(Stat.HP);
+
+        OnChangeHp?.Invoke(Stat.HP, _initialStat.HP);
     }
 }

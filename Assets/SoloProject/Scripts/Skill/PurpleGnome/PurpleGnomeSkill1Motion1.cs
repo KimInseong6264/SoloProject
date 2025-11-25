@@ -10,6 +10,7 @@ public class PurpleGnomeSill1Motion1 : ISkillMotion
     private int _coinCount;
     private int _basicSkillValue;
     private int _coinValue;
+    private int _defMultiplier = 5;
     private float _motionTime = 3;
 
 
@@ -36,21 +37,31 @@ public class PurpleGnomeSill1Motion1 : ISkillMotion
     {
         // 스킬애니메이션 트리거
         _skill.GetMotion();
-        Debug.Log("보라노움 1모션 애니메이션");
+
+        BattleManager system = BattleManager.Instance;
+        system.BattleUnit[UnitType.Player].TakeDamage(GetDamage());
+        Debug.Log("데미지" + GetDamage());
 
         // BattleManager에서 메서드 빌려와서 코루틴 실행
-        BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());
     }
 
     public IEnumerator MotionPlay()
     {
         WaitForSeconds wait = new WaitForSeconds(_motionTime);
-        Debug.Log("보라노움 스킬모션1 진행");
         yield return wait;
 
         _skill.SetMotion(Motion.Second);
         _skill.UpateSkill();
     }
 
+    public int GetDamage()
+    {
+        int playerAtt = BattleManager.Instance.BattleUnit[UnitType.Enemy].Stat.Att;
+        int enemyDef = _defMultiplier * BattleManager.Instance.BattleUnit[UnitType.Player].Stat.Def;
+
+        int damage = _basicSkillValue + playerAtt - enemyDef;
+
+        return damage;
+    }
 }

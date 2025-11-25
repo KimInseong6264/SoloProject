@@ -14,6 +14,7 @@ public class PurpleGnomeController : MonoBehaviour, IUnitInteractive, IClickable
         View = GetComponent<PurpleGnomeView>();
         UnitModel = new PurpleGnomeModel(_unit, this);
         UnitModel.SetPos(transform);
+        View.GetHpBar(UnitModel.Stat.HP, _unit.InitialStat.HP);
     }
 
     private void Start()

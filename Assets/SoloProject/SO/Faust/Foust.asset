@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Foust
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   <InitialName>k__BackingField: "\uD30C\uC6B0\uC2A4\uD2B8"
+  <InitialStat>k__BackingField:
+    _hp: 100
+    _att: 10
+    _def: 20
   <SkillList>k__BackingField:
   - {fileID: 11400000, guid: 5b588b65e94f2b74299aee3aa88f1a5b, type: 2}
   - {fileID: 11400000, guid: 84feacf3a61a42b489b10b504022b4ce, type: 2}
