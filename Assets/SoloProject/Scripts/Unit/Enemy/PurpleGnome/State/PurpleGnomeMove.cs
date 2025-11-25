@@ -3,12 +3,12 @@ using UnityEngine.UIElements;
 
 public class PurpleGnomeMove : IUnitState
 {
-    private PurpleGnomeControler _purpleGnome;
+    private PurpleGnomeController _purpleGnome;
     private Transform _transform;
     float _distance = 0f;
     private float _speed = 8f;
 
-    public PurpleGnomeMove(PurpleGnomeControler purpleGnome)
+    public PurpleGnomeMove(PurpleGnomeController purpleGnome)
     {
         _purpleGnome = purpleGnome;
     }

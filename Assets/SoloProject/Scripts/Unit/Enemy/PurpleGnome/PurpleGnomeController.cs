@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PurpleGnomeView))]
-public class PurpleGnomeControler : MonoBehaviour, IClickable
+public class PurpleGnomeController : MonoBehaviour, IClickable
 {
     [SerializeField] private UnitData _unit;
     public PurpleGnomeView View { get; private set; }
@@ -19,16 +19,11 @@ public class PurpleGnomeControler : MonoBehaviour, IClickable
     private void Awake()
     {
         View = GetComponent<PurpleGnomeView>();
-        _purpleGnomeModel = new PurpleGnomeModel(_unit);
+        _purpleGnomeModel = new PurpleGnomeModel(_unit, this);
         _purpleGnomeModel.SetPos(transform);
-        
-        // 상태패턴 세팅
-        _stateList = new Dictionary<State, IUnitState>();
-        _stateList.Add(State.Idle, new PurpleGnomeIdle(this));
-        _stateList.Add(State.Move, new PurpleGnomeMove(this));
-        _stateList.Add(State.Clash, new PurpleGnomeClash(this));
-        _stateList.Add(State.Attack, new PurpleGnomeAttack(this));
-        SetState(State.Idle);
+
+        _stateList = _purpleGnomeModel.StateList;
+        _currentState = _purpleGnomeModel.CurrentState;
     }
 
     private void Start()

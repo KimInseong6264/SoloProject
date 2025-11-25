@@ -9,15 +9,27 @@ public class PurpleGnomeModel : IUnit
 
     public List<ISkill> SkillList { get; private set; }
 
-    public Transform CurrentPos {  get; private set; }
+    public Transform CurrentPos { get; private set; }
 
-    public PurpleGnomeModel(UnitData unit)
+    public Dictionary<State, IUnitState> StateList { get; private set; }
+
+    public IUnitState CurrentState { get; private set; }
+
+    public PurpleGnomeModel(UnitData unit, PurpleGnomeController controller)
     {
         Init(unit);
         SkillList = new List<ISkill>();
         foreach (var skill in unit.SkillList)
         {
             SkillList.Add(new PurpleGnomeSkill1(skill));
+
+            // 상태패턴 세팅
+            StateList = new Dictionary<State, IUnitState>();
+            StateList.Add(State.Idle, new PurpleGnomeIdle(controller));
+            StateList.Add(State.Move, new PurpleGnomeMove(controller));
+            StateList.Add(State.Clash, new PurpleGnomeClash(controller));
+            StateList.Add(State.Attack, new PurpleGnomeAttack(controller));
+            CurrentState = StateList[State.Idle];
         }
     }
 

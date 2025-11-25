@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PurpleGnomeAttack : IUnitState
 {
-    private PurpleGnomeControler _purpleGnome;
+    private PurpleGnomeController _purpleGnome;
 
-    public PurpleGnomeAttack(PurpleGnomeControler purpleGnome)
+    public PurpleGnomeAttack(PurpleGnomeController purpleGnome)
     {
         _purpleGnome = purpleGnome;
     }

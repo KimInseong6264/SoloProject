@@ -1,9 +1,9 @@
 
 public class PurpleGnomeIdle : IUnitState
 {
-    private PurpleGnomeControler _purpleGnome;
+    private PurpleGnomeController _purpleGnome;
 
-    public PurpleGnomeIdle(PurpleGnomeControler purpleGnome)
+    public PurpleGnomeIdle(PurpleGnomeController purpleGnome)
     {
         _purpleGnome = purpleGnome;
     }

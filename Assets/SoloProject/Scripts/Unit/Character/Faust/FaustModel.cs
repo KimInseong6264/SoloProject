@@ -12,7 +12,10 @@ public class FaustModel : IUnit
 
     public Transform CurrentPos {  get; private set; }
 
-    public FaustModel(UnitData unit)
+    public Dictionary<State, IUnitState> StateList { get; private set; }
+    public IUnitState CurrentState { get; private set; }
+
+    public FaustModel(UnitData unit , FaustControler controler)
     {
         Init(unit);
         SkillList = new List<ISkill>();
@@ -20,6 +23,14 @@ public class FaustModel : IUnit
         {
             SkillList.Add(new FaustSkill1(skill));
         }
+
+        // 상태패턴 세팅
+        StateList = new Dictionary<State, IUnitState>();
+        StateList.Add(State.Idle, new FaustIdle(controler));
+        StateList.Add(State.Move, new FaustMove(controler));
+        StateList.Add(State.Clash, new FaustClash(controler));
+        StateList.Add(State.Attack, new FaustAttack(controler));
+        CurrentState = StateList[State.Idle];
     }
 
     // 초기화 메서드

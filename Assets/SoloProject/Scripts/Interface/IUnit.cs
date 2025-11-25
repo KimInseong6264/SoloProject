@@ -10,6 +10,10 @@ public interface IUnit
 
     public Transform CurrentPos { get; }
 
+    // 상태 패턴
+    public Dictionary<State, IUnitState> StateList { get; }
+    public IUnitState CurrentState { get; }
+
     public void Init(UnitData unit);
 
     public void SetPos(Transform pos);

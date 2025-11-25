@@ -19,16 +19,12 @@ public class FaustControler : MonoBehaviour, IClickable
     private void Awake()
     {
         View = GetComponent<FaustView>();
-        _faustModel = new FaustModel(_unit);
+        _faustModel = new FaustModel(_unit, this);
         _faustModel.SetPos(transform);
-        
-        // 상태패턴 세팅
-        _stateList = new Dictionary<State, IUnitState>();
-        _stateList.Add(State.Idle, new FaustIdle(this));
-        _stateList.Add(State.Move, new FaustMove(this));
-        _stateList.Add(State.Clash, new FaustClash(this));
-        _stateList.Add(State.Attack, new FaustAttack(this));
-        SetState(State.Idle);
+
+        // 상태 패턴 연결
+        _stateList = _faustModel.StateList;
+        _currentState = _faustModel.CurrentState;
     }
 
     private void Start()
