@@ -5,10 +5,10 @@ public class BattleSeletUI : MonoBehaviour
 {
     [SerializeField] private Text[] _playerText;
     [SerializeField] private Text[] _enemyText;
-    IUnit _player;
-    IUnit _enemy; 
-    ISkill _playerSkill;
-    ISkill _enemySkill;
+    Unit _player;
+    Unit _enemy; 
+    Skill _playerSkill;
+    Skill _enemySkill;
 
     private void Update()
     {

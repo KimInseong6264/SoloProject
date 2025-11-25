@@ -16,8 +16,8 @@ public class BattleManager : MonoBehaviour
     public CoinSystem EnemyCoin { get; private set; } = new();
 
     // 배틀할 유닛과 스킬 리스트
-    public Dictionary<UnitType, IUnit> BattleUnit { get; private set; }
-    public Dictionary<UnitType, ISkill> BattleSkill { get; private set; }
+    public Dictionary<UnitType, Unit> BattleUnit { get; private set; }
+    public Dictionary<UnitType, Skill> BattleSkill { get; private set; }
 
     private void Awake()
     {
@@ -29,13 +29,13 @@ public class BattleManager : MonoBehaviour
         BattleSkill = new() { { UnitType.Player, null }, { UnitType.Enemy, null } };
     }
 
-    public void SetBattle(UnitType unitType, IUnit unit)
+    // 배틀할 대상 리스트에 추가
+    public void SetBattle(UnitType unitType, Unit unit)
     {
         BattleUnit[unitType] = unit;
     }
-
-    // 배틀할 대상 리스트에 추가
-    public void SetBattle(UnitType unitType, ISkill skill)
+    // 배틀할 대상의 선택 스킬 리스트에 추가
+    public void SetBattle(UnitType unitType, Skill skill)
     {
         BattleSkill[unitType] = skill;
     }

@@ -3,12 +3,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PurpleGnomeView))]
-public class PurpleGnomeController : MonoBehaviour, IClickable
+public class PurpleGnomeController : MonoBehaviour, IUnitInteractive, IClickable
 {
-    [SerializeField] private UnitData _unit;
+    [SerializeField] private UnitDataSO _unit;
     public PurpleGnomeView View { get; private set; }
 
-    private PurpleGnomeModel _purpleGnomeModel;
+    public Unit UnitModel { get; private set; }
+
     private Dictionary<State, IUnitState> _stateList;
     private IUnitState _currentState;
 
@@ -19,11 +20,12 @@ public class PurpleGnomeController : MonoBehaviour, IClickable
     private void Awake()
     {
         View = GetComponent<PurpleGnomeView>();
-        _purpleGnomeModel = new PurpleGnomeModel(_unit, this);
-        _purpleGnomeModel.SetPos(transform);
+        UnitModel = new PurpleGnomeModel(_unit, this);
+        UnitModel.SetPos(transform);
 
-        _stateList = _purpleGnomeModel.StateList;
-        _currentState = _purpleGnomeModel.CurrentState;
+        // 상태 패턴 연결
+        _stateList = UnitModel.StateList;
+        _currentState = UnitModel.CurrentState;
     }
 
     private void Start()
@@ -49,7 +51,7 @@ public class PurpleGnomeController : MonoBehaviour, IClickable
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
     private void SetSkillMotion()
     {
-        foreach (var skillList in _purpleGnomeModel.SkillList)
+        foreach (var skillList in UnitModel.SkillList)
         {
             skillList.OnSkillMotion += View.OnSkillAni;
         }
@@ -60,13 +62,13 @@ public class PurpleGnomeController : MonoBehaviour, IClickable
         if (_currentState == _stateList[State.Move])
         {
             _currentState.Update();
-            transform.position = _purpleGnomeModel.CurrentPos.position;
+            transform.position = UnitModel.CurrentPos.position;
         }
     }
 
     public void OnCklick()
     {
-        BattleManager.Instance.BattleUnit[UnitType.Enemy] = _purpleGnomeModel;
+        BattleManager.Instance.BattleUnit[UnitType.Enemy] = UnitModel;
 
         if (!_isBattle)
         {

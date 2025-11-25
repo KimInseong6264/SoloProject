@@ -16,7 +16,7 @@ public class DamageSystem : MonoBehaviour
     // 스킬 데미지 계산 + 모션 시작
     private void GetDamageStep(UnitType unit)
     {
-        ISkill skill = BattleManager.Instance.BattleSkill[unit];
+        Skill skill = BattleManager.Instance.BattleSkill[unit];
 
         Debug.LogWarning("데미지스텝" + skill);
 

@@ -3,11 +3,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(FaustView))]
-public class FaustControler : MonoBehaviour, IClickable
+public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
 {
-    [SerializeField] private UnitData _unit;
+    [SerializeField] private UnitDataSO _unit;
     public FaustView View { get; private set; }
-    private FaustModel _faustModel;
+    public Unit UnitModel { get; private set; }
 
     private Dictionary<State, IUnitState> _stateList;
     private IUnitState _currentState;
@@ -16,15 +16,17 @@ public class FaustControler : MonoBehaviour, IClickable
     // 중복되게 구독하지 않도록 방지
     private bool _isBattle;
 
+
+
     private void Awake()
     {
         View = GetComponent<FaustView>();
-        _faustModel = new FaustModel(_unit, this);
-        _faustModel.SetPos(transform);
+        UnitModel = new FaustModel(_unit, this);
+        UnitModel.SetPos(transform);
 
         // 상태 패턴 연결
-        _stateList = _faustModel.StateList;
-        _currentState = _faustModel.CurrentState;
+        _stateList = UnitModel.StateList;
+        _currentState = UnitModel.CurrentState;
     }
 
     private void Start()
@@ -50,7 +52,7 @@ public class FaustControler : MonoBehaviour, IClickable
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
     private void SetSkillMotion()
     {
-        foreach (var skillList in _faustModel.SkillList)
+        foreach (var skillList in UnitModel.SkillList)
         {
             skillList.OnSkillMotion += View.OnSkillAni;
         }
@@ -61,13 +63,13 @@ public class FaustControler : MonoBehaviour, IClickable
         if (_currentState == _stateList[State.Move])
         {
             _currentState.Update();
-            transform.position = _faustModel.CurrentPos.position;
+            transform.position = UnitModel.CurrentPos.position;
         }
     }
 
     public void OnCklick()
     {
-        BattleManager.Instance.BattleUnit[UnitType.Player] = _faustModel;
+        BattleManager.Instance.SetBattle(UnitType.Player, UnitModel);
 
         if (!_isBattle)
         {

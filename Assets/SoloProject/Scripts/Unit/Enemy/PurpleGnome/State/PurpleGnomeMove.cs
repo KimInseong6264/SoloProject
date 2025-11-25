@@ -29,9 +29,9 @@ public class PurpleGnomeMove : IUnitState
     {
         Vector3 dir = GetDirection();
         SetMoveing(dir);
+
+
         _distance = Vector3.SqrMagnitude(dir);
-
-
         if (_distance < 2f)
             _purpleGnome.SetState(State.Clash);
 

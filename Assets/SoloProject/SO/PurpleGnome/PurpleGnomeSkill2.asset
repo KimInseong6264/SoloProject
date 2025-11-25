@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d2a33e6085e2b4084792a33242e823, type: 3}
+  m_Script: {fileID: 11500000, guid: 8156985f9455e634caff7311835ba59f, type: 3}
   m_Name: PurpleGnomeSkill2
-  m_EditorClassIdentifier: Assembly-CSharp::SkillData
-  <Name>k__BackingField: "\uD314\uD314\uD558\uC6C0"
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  <Name>k__BackingField: "\uD3EC\uD68D\uD558\uC6C0"
   <CoinCount>k__BackingField: 1
-  <BasicSkillValue>k__BackingField: 4
-  <CoinValue>k__BackingField: 8
+  <BasicSkillValue>k__BackingField: 5
+  <CoinValue>k__BackingField: 7

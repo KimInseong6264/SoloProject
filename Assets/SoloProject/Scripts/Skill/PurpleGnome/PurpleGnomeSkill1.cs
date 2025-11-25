@@ -7,35 +7,15 @@ using UnityEngine;
 // 1. 생성자 이름
 // 2. MotionList갱신
 // 3. 모션 추가시, MotionList에 추가
-public class PurpleGnomeSkill1 : SkillStatePattern, ISkill
+public class PurpleGnomeSkill1 : Skill
 {
 
-    public string SkillName { get; private set; }
-    public int CoinCount { get; private set; }
-    public int BasicSkillValue { get; private set; }
-    public int CoinValue { get; private set; }
-
-    // 스킬 실행시 해당 모션의 애니메이션을 구독시켜서 재생
-    public event Action<int> OnSkillMotion;
-
     // 생성자
-    public PurpleGnomeSkill1(SkillData skill)
+    public PurpleGnomeSkill1(SkillDataSO skill)
     {
         Init(skill);
+        SetMotion();
     }
-
-
-    public void Init(SkillData skill)
-    {
-        SkillName = skill.Name;
-        CoinCount = skill.CoinCount;
-        BasicSkillValue = skill.BasicSkillValue;
-        CoinValue = skill.CoinValue;
-
-        if (MotionList == null)
-            SetMotion();
-    }
-
 
     // 스킬 모션 상태 초기화
     private void SetMotion()
@@ -44,17 +24,5 @@ public class PurpleGnomeSkill1 : SkillStatePattern, ISkill
         MotionList.Add(Motion.First, new PurpleGnomeSill1Motion1(this));
         MotionList.Add(Motion.Second, new PurpleGnomeSill1Motion2(this));
         SetMotion(Motion.First);
-    }
-
-    public void GetMotion()
-    {
-        if (OnSkillMotion == null)
-        {
-            UnityEngine.Debug.LogError(this.SkillName + "스킬모션 구독없음");
-            return;
-        }
-
-        // 정상상태시, View의 OnSkillAni()가 구독
-        OnSkillMotion?.Invoke(1);
     }
 }

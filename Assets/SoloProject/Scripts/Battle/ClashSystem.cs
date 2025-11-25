@@ -5,10 +5,10 @@ using UnityEngine;
 // 합 관련 클래스
 public class ClashSystem : MonoBehaviour
 {
-    private IUnit _player;
-    private IUnit _enemy;
-    private ISkill _playerSkill;
-    private ISkill _enemySkill;
+    private Unit _player;
+    private Unit _enemy;
+    private Skill _playerSkill;
+    private Skill _enemySkill;
 
 
     // 배틀 시작을 알려 유닛들의 상태를 변화시킬 이벤트

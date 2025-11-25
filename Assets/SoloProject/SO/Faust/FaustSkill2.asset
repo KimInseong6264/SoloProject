@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d2a33e6085e2b4084792a33242e823, type: 3}
+  m_Script: {fileID: 11500000, guid: 8156985f9455e634caff7311835ba59f, type: 3}
   m_Name: FaustSkill2
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   <Name>k__BackingField: "\uD6C4\uBCBC\uCC0C\uB974\uAE30"

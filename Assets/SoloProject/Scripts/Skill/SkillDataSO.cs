@@ -3,7 +3,7 @@ using UnityEngine;
 
 // 런타임 중에도 초기화를 위한 값으로만 보존
 [CreateAssetMenu(fileName = "Skill", menuName = "SkillData/Skill")]
-public class SkillData : ScriptableObject
+public class SkillDataSO : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int CoinCount { get; private set; }

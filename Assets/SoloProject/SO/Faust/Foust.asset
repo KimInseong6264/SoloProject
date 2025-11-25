@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ce5942afa2aa240974c7664ad5a092, type: 3}
+  m_Script: {fileID: 11500000, guid: de80c786ed14fd54d83cc71ce5ad2809, type: 3}
   m_Name: Foust
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  <InitialName>k__BackingField: "\uD30C\uC6B0\uC6C5"
-  <InitialStat>k__BackingField:
-    HP: 100
-    Att: 0
-    Def: 0
+  <InitialName>k__BackingField: "\uD30C\uC6B0\uC2A4\uD2B8"
   <SkillList>k__BackingField:
   - {fileID: 11400000, guid: 5b588b65e94f2b74299aee3aa88f1a5b, type: 2}
   - {fileID: 11400000, guid: 84feacf3a61a42b489b10b504022b4ce, type: 2}

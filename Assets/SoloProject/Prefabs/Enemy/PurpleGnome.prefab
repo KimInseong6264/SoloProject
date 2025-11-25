@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7254065356870749399}
   - component: {fileID: 1757755527596006988}
   - component: {fileID: -8355996556722556403}
-  - component: {fileID: -3864051622036695531}
+  - component: {fileID: 3521919266696594129}
   - component: {fileID: 6252670772992048775}
   m_Layer: 0
   m_Name: PurpleGnome
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d45fdce6511154fbaf7031ba1db14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PurpleGnomeView
---- !u!114 &-3864051622036695531
+--- !u!114 &3521919266696594129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6594367208993217044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f666593c57a56bd448ea4f53b5ffebba, type: 3}
+  m_Script: {fileID: 11500000, guid: 246e98a18a56de949af5e4ee14d3ecaf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurpleGnomeControler
-  _unit: {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::PurpleGnomeController
+  _unit: {fileID: 11400000, guid: 05685ebb8345eb244bfb6aa860567f26, type: 2}
 --- !u!136 &6252670772992048775
 CapsuleCollider:
   m_ObjectHideFlags: 0

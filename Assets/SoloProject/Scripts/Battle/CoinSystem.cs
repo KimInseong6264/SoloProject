@@ -20,7 +20,7 @@ public class CoinSystem
         return random;
     }
 
-    public IEnumerator GetCoinToss(ISkill skill, float waitTime = 1)
+    public IEnumerator GetCoinToss(Skill skill, float waitTime = 1)
     {
         WaitForSeconds wait = new WaitForSeconds(waitTime / skill.CoinCount);
         int random;

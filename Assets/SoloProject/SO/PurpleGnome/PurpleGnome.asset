@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ce5942afa2aa240974c7664ad5a092, type: 3}
+  m_Script: {fileID: 11500000, guid: de80c786ed14fd54d83cc71ce5ad2809, type: 3}
   m_Name: PurpleGnome
-  m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  <InitialName>k__BackingField: "\uBCF4\uB77C \uB178\uC6C0"
-  <InitialStat>k__BackingField:
-    HP: 0
-    Att: 0
-    Def: 0
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  <InitialName>k__BackingField: "\uBCF4\uB77C\uB178\uC6C0"
   <SkillList>k__BackingField:
   - {fileID: 11400000, guid: 8623c0a5fd8f2de44acc1ab4018dfdf0, type: 2}
-  - {fileID: 11400000, guid: 05685ebb8345eb244bfb6aa860567f26, type: 2}
+  - {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
