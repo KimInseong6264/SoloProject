@@ -11,7 +11,8 @@ public class FaustClash : IUnitState
 
     public void Enter()
     {
-        
+        OnClashAni();
+        _faust.SetState(State.Attack);
     }
 
     public void Exit()
@@ -22,5 +23,14 @@ public class FaustClash : IUnitState
     public void Update()
     {
 
+    }
+
+    private void OnClashAni()
+    {
+        int playerClash = BattleManager.Instance.PlayerCoin.ClashPower;
+        int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
+
+        if(playerClash > enemyClash)
+            _faust.View.OnClashAni();
     }
 }

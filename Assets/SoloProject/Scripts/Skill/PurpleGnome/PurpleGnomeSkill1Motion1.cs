@@ -50,7 +50,7 @@ public class PurpleGnomeSill1Motion1 : ISkillMotion
         yield return wait;
 
         _skill.SetMotion(Motion.Second);
-        _skill.StartSkillMotion();
+        _skill.UpateSkill();
     }
 
 }

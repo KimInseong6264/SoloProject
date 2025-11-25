@@ -3,6 +3,7 @@ using UnityEngine;
 public class FaustAttack : IUnitState
 {
     private FaustControler _faust;
+    private Skill _skill;
 
     public FaustAttack(FaustControler faust)
     {
@@ -11,7 +12,7 @@ public class FaustAttack : IUnitState
 
     public void Enter()
     {
-        
+        OnSkill();
     }
 
     public void Exit()
@@ -22,5 +23,11 @@ public class FaustAttack : IUnitState
     public void Update()
     {
 
+    }
+
+    private void OnSkill()
+    {
+        _skill = BattleManager.Instance.BattleSkill[UnitType.Player];
+        _skill.UpateSkill();
     }
 }

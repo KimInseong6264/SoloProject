@@ -10,11 +10,6 @@ public class ClashSystem : MonoBehaviour
     private Skill _playerSkill;
     private Skill _enemySkill;
 
-
-    // 배틀 시작을 알려 유닛들의 상태를 변화시킬 이벤트
-    // 각 유닛의 OnClick에서 구독
-    public event Action<State> OnBattleStart;
-
     // BattleSystem이 구독
     public event Action<UnitType> OnDamageStep;
 
@@ -35,8 +30,8 @@ public class ClashSystem : MonoBehaviour
             Debug.LogWarning("배틀 할 대상이 명확하지 않습니다.");
             return;
         }
-
-        OnBattleStart?.Invoke(State.Move);
+        BattleManager.Instance.BattleUnit[UnitType.Player].SetState(State.Move);
+        BattleManager.Instance.BattleUnit[UnitType.Enemy].SetState(State.Move);
 
         StartCoroutine(Clash());
     }

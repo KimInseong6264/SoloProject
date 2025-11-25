@@ -506,7 +506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 936526925}
         m_TargetAssemblyTypeName: BattleSeletUI, Assembly-CSharp
         m_MethodName: SetPlayerSkill
         m_Mode: 3
@@ -2148,7 +2148,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 936526925}
         m_TargetAssemblyTypeName: BattleSeletUI, Assembly-CSharp
         m_MethodName: SetPlayerSkill
         m_Mode: 3
@@ -2281,7 +2281,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 936526925}
         m_TargetAssemblyTypeName: BattleSeletUI, Assembly-CSharp
         m_MethodName: SetEnemySkill
         m_Mode: 3
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 936526925}
         m_TargetAssemblyTypeName: BattleSeletUI, Assembly-CSharp
         m_MethodName: SetEnemySkill
         m_Mode: 3

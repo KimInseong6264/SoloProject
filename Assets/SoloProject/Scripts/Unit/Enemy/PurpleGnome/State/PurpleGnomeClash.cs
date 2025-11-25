@@ -11,7 +11,8 @@ public class PurpleGnomeClash : IUnitState
 
     public void Enter()
     {
-        
+        OnClashAni();
+        _purpleGnome.SetState(State.Attack);
     }
 
     public void Exit()
@@ -22,5 +23,14 @@ public class PurpleGnomeClash : IUnitState
     public void Update()
     {
 
+    }
+
+    private void OnClashAni()
+    {
+        int playerClash = BattleManager.Instance.PlayerCoin.ClashPower;
+        int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
+
+        if (playerClash > enemyClash)
+            _purpleGnome.View.OnClashAni();
     }
 }

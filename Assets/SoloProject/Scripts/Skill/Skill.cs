@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public abstract class Skill
 {
@@ -26,7 +24,7 @@ public abstract class Skill
     }
 
     // 스킬 사용
-    public void StartSkillMotion()
+    public void UpateSkill()
     {
         _currentMotion.Update();
     }

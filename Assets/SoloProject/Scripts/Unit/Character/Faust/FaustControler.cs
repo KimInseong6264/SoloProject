@@ -9,24 +9,11 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
     public FaustView View { get; private set; }
     public Unit UnitModel { get; private set; }
 
-    private Dictionary<State, IUnitState> _stateList;
-    private IUnitState _currentState;
-
-    // ClashSystem의 OnBattleStart에 SetState가 들어있으면 true
-    // 중복되게 구독하지 않도록 방지
-    private bool _isBattle;
-
-
-
     private void Awake()
     {
         View = GetComponent<FaustView>();
         UnitModel = new FaustModel(_unit, this);
         UnitModel.SetPos(transform);
-
-        // 상태 패턴 연결
-        _stateList = UnitModel.StateList;
-        _currentState = UnitModel.CurrentState;
     }
 
     private void Start()
@@ -37,16 +24,8 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
 
     private void Update()
     {
+        Debug.LogWarning(UnitModel.CurrentState);
         OnMove();
-    }
-
-
-    // 상태 변환 메서드
-    public void SetState(State state)
-    {
-        _currentState?.Exit();
-        _currentState = _stateList[state];
-        _currentState.Enter();
     }
 
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
@@ -58,25 +37,16 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
         }
     }
 
+    public void SetState(State newState) => UnitModel.SetState(newState);
+
     private void OnMove()
     {
-        if (_currentState == _stateList[State.Move])
+        if (UnitModel.CurrentState == UnitModel.StateList[State.Move])
         {
-            _currentState.Update();
-            transform.position = UnitModel.CurrentPos.position;
+            UnitModel.CurrentState.Update();
         }
     }
 
-    public void OnCklick()
-    {
+    public void OnCklick() => 
         BattleManager.Instance.SetBattle(UnitType.Player, UnitModel);
-
-        if (!_isBattle)
-        {
-            ClashSystem clash = BattleManager.Instance.Clash;
-            clash.OnBattleStart += SetState;
-            _isBattle = true;
-        }
-         
-    }
 }

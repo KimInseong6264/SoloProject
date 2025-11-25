@@ -4,7 +4,7 @@ public class FaustMove : IUnitState
 {
     private FaustControler _faust;
     private Transform _transform;
-    private float _distance = 0f;
+    private float _maxDistance = 3f;
     private float _speed = 8f;
 
     public FaustMove(FaustControler faust)
@@ -15,9 +15,9 @@ public class FaustMove : IUnitState
 
     public void Enter()
     {
-        _distance = Vector3.Magnitude(GetDirection());
+        float distance = Vector3.Magnitude(GetDirection());
 
-        _faust.View.OnMoveAni(_distance);
+        _faust.View.OnMoveAni(distance);
     }
 
     public void Exit()
@@ -30,8 +30,8 @@ public class FaustMove : IUnitState
         Vector3 dir = GetDirection();
         SetMoveing(dir);
 
-        _distance = Vector3.SqrMagnitude(dir);
-        if (_distance < 2f)
+         float distance = Vector3.SqrMagnitude(dir);
+        if (distance < _maxDistance)
             _faust.SetState(State.Clash);
     }
 
@@ -45,8 +45,6 @@ public class FaustMove : IUnitState
 
     private void SetMoveing(Vector3 direction)
     {
-        _transform = BattleManager.Instance.BattleUnit[UnitType.Player].CurrentPos;
-        
         _transform.Translate
             (direction.normalized * Time.deltaTime * _speed);
     }

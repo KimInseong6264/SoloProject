@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // 합 이후 데미지 관련 클래스
@@ -46,8 +47,10 @@ public class BattleManager : MonoBehaviour
     {
         PlayerCoin.GetCoinReset();
         EnemyCoin.GetCoinReset();
-        BattleUnit.Clear();
-        BattleSkill.Clear();
+        foreach (var unit in BattleUnit.Keys.ToList())
+            BattleUnit[unit] = null;
+        foreach(var skill in  BattleSkill.Keys.ToList())
+            BattleSkill[skill] = null;
     }
 
     // 스킬모션에 StartCoroutine을 임시로 부여
