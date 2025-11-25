@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(FaustView))]
-public class FaustControler : MonoBehaviour, IClickable
+[RequireComponent(typeof(PurpleGnomeView))]
+public class PurpleGnomeControler : MonoBehaviour, IClickable
 {
     [SerializeField] private UnitData _unit;
-    public FaustView View { get; private set; }
-    private FaustModel _faustModel;
+    public PurpleGnomeView View { get; private set; }
 
+    private PurpleGnomeModel _purpleGnomeModel;
     private Dictionary<State, IUnitState> _stateList;
     private IUnitState _currentState;
 
@@ -18,16 +18,16 @@ public class FaustControler : MonoBehaviour, IClickable
 
     private void Awake()
     {
-        View = GetComponent<FaustView>();
-        _faustModel = new FaustModel(_unit);
-        _faustModel.SetPos(transform);
+        View = GetComponent<PurpleGnomeView>();
+        _purpleGnomeModel = new PurpleGnomeModel(_unit);
+        _purpleGnomeModel.SetPos(transform);
         
         // 상태패턴 세팅
         _stateList = new Dictionary<State, IUnitState>();
-        _stateList.Add(State.Idle, new FaustIdle(this));
-        _stateList.Add(State.Move, new FaustMove(this));
-        _stateList.Add(State.Clash, new FaustClash(this));
-        _stateList.Add(State.Attack, new FaustAttack(this));
+        _stateList.Add(State.Idle, new PurpleGnomeIdle(this));
+        _stateList.Add(State.Move, new PurpleGnomeMove(this));
+        _stateList.Add(State.Clash, new PurpleGnomeClash(this));
+        _stateList.Add(State.Attack, new PurpleGnomeAttack(this));
         SetState(State.Idle);
     }
 
@@ -54,7 +54,7 @@ public class FaustControler : MonoBehaviour, IClickable
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
     private void SetSkillMotion()
     {
-        foreach (var skillList in _faustModel.SkillList)
+        foreach (var skillList in _purpleGnomeModel.SkillList)
         {
             skillList.OnSkillMotion += View.OnSkillAni;
         }
@@ -65,13 +65,13 @@ public class FaustControler : MonoBehaviour, IClickable
         if (_currentState == _stateList[State.Move])
         {
             _currentState.Update();
-            transform.position = _faustModel.CurrentPos.position;
+            transform.position = _purpleGnomeModel.CurrentPos.position;
         }
     }
 
     public void OnCklick()
     {
-        BattleManager.Instance.BattleUnit[UnitType.Player] = _faustModel;
+        BattleManager.Instance.BattleUnit[UnitType.Enemy] = _purpleGnomeModel;
 
         if (!_isBattle)
         {
@@ -79,6 +79,5 @@ public class FaustControler : MonoBehaviour, IClickable
             clash.OnBattleStart += SetState;
             _isBattle = true;
         }
-         
     }
 }

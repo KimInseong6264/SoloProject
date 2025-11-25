@@ -35,7 +35,7 @@ public class CoinSystem
         IsDone = true;
     }
 
-    public void GetReset()
+    public void GetCoinReset()
     {
         TossResult.Clear();
         ClashPower = 0;

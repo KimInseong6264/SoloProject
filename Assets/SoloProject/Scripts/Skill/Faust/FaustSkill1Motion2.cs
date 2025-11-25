@@ -25,9 +25,7 @@ public class FaustSkill1Motion2 : ISkillMotion
 
     public void Enter()
     {
-        // 스킬애니메이션 트리거
-        _skill.GetMotion();
-        Debug.Log("파우스트 2모션 애니메이션");
+        
     }
 
     public void Exit()
@@ -37,6 +35,10 @@ public class FaustSkill1Motion2 : ISkillMotion
 
     public void Update()
     {
+        // 스킬애니메이션 트리거
+        _skill.GetMotion();
+        Debug.Log("파우스트 2모션 애니메이션");
+
         // BattleManager에서 메서드 빌려와서 코루틴 실행
         BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());

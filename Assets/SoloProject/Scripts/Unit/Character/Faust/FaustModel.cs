@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 
 public class FaustModel : IUnit
@@ -8,6 +9,8 @@ public class FaustModel : IUnit
     public UnitStat Stat { get; private set; }
 
     public List<ISkill> SkillList { get; private set; }
+
+    public Transform CurrentPos {  get; private set; }
 
     public FaustModel(UnitData unit)
     {
@@ -34,6 +37,12 @@ public class FaustModel : IUnit
             SkillList[i].Init(unit.SkillList[i]);
         }
     }
+
+    public void SetPos(Transform pos)
+    {
+        CurrentPos = pos;
+    }
+
 
     // 데미지를 입는 메서드
     public void TakeDamage(int damage)

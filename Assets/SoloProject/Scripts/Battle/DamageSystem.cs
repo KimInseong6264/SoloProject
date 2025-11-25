@@ -10,14 +10,13 @@ public class DamageSystem : MonoBehaviour
 
     private void OnDisable()
     {
-        BattleManager.Instance.Clash.OnDamageStep -= GetDamageStep;
+        //BattleManager.Instance.Clash.OnDamageStep -= GetDamageStep;
     }
 
     // 스킬 데미지 계산 + 모션 시작
     private void GetDamageStep(UnitType unit)
     {
-        ClashSystem clash = BattleManager.Instance.Clash;
-        ISkill skill = clash.BattleSkill[(int)unit];
+        ISkill skill = BattleManager.Instance.BattleSkill[unit];
 
         Debug.LogWarning("데미지스텝" + skill);
 
@@ -27,9 +26,6 @@ public class DamageSystem : MonoBehaviour
 
     public void SetEndDamageStep()
     {
-        ClashSystem clash = BattleManager.Instance.Clash;
-
-        clash.GetReset();
+        BattleManager.Instance.InitBattleList();
     }
-
 }

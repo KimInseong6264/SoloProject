@@ -45,4 +45,16 @@ public class PurpleGnomeSkill1 : SkillStatePattern, ISkill
         MotionList.Add(Motion.Second, new PurpleGnomeSill1Motion2(this));
         SetMotion(Motion.First);
     }
+
+    public void GetMotion()
+    {
+        if (OnSkillMotion == null)
+        {
+            UnityEngine.Debug.LogError(this.SkillName + "스킬모션 구독없음");
+            return;
+        }
+
+        // 정상상태시, View의 OnSkillAni()가 구독
+        OnSkillMotion?.Invoke(1);
+    }
 }

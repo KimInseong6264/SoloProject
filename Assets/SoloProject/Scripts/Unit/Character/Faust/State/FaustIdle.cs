@@ -10,7 +10,7 @@ public class FaustIdle : IUnitState
 
     public void Enter()
     {
-        _faust.FaustView.OnIdleAni();
+        _faust.View.OnIdleAni();
     }
 
     public void Exit()

@@ -5,30 +5,38 @@ using UnityEngine;
 // 합 관련 클래스
 public class ClashSystem : MonoBehaviour
 {
-    public CoinSystem PlayerCoin { get; private set; } = new();
-    public CoinSystem EnemyCoin { get; private set; } = new();
+    private IUnit _player;
+    private IUnit _enemy;
+    private ISkill _playerSkill;
+    private ISkill _enemySkill;
 
-    public IUnit[] BattleUnit { get; private set; } = new IUnit[2];
-    public ISkill[] BattleSkill { get; private set; } = new ISkill[2];
-    
 
+    // 배틀 시작을 알려 유닛들의 상태를 변화시킬 이벤트
+    // 각 유닛의 OnClick에서 구독
+    public event Action<State> OnBattleStart;
 
     // BattleSystem이 구독
     public event Action<UnitType> OnDamageStep;
 
-    public void SetBattle(IUnit unit, ISkill skill, UnitType unitType )
+    private void SetBattle()
     {
-        BattleUnit[(int)unitType] = unit;
-        BattleSkill[(int)unitType] = skill;
+        _player = BattleManager.Instance.BattleUnit[UnitType.Player];
+        _playerSkill = BattleManager.Instance.BattleSkill[UnitType.Player];
+
+        _enemy = BattleManager.Instance.BattleUnit[UnitType.Enemy];
+        _enemySkill = BattleManager.Instance.BattleSkill[UnitType.Enemy];
     }
 
     public void Battle()
     {
-        if (BattleUnit[0] == null || BattleUnit[1] == null)
+        SetBattle();
+        if (_player == null || _enemy == null)
         {
             Debug.LogWarning("배틀 할 대상이 명확하지 않습니다.");
             return;
         }
+
+        OnBattleStart?.Invoke(State.Move);
 
         StartCoroutine(Clash());
     }
@@ -37,14 +45,15 @@ public class ClashSystem : MonoBehaviour
     // 전투 시 합이라는 것을 진행(코인토스로 승부 겨루기)
     private IEnumerator Clash()
     {
-        int player = (int)UnitType.Player;
-        int enemy = (int)UnitType.Enemy;
+        Debug.Log("합진행");
+        CoinSystem player = BattleManager.Instance.PlayerCoin;
+        CoinSystem enemy = BattleManager.Instance.EnemyCoin;
 
-        StartCoroutine(PlayerCoin.GetCoinToss(BattleSkill[player]));
+        StartCoroutine(player.GetCoinToss(_playerSkill));
 
-        StartCoroutine(EnemyCoin.GetCoinToss(BattleSkill[enemy]));
+        StartCoroutine(player.GetCoinToss(_enemySkill));
 
-        yield return new WaitUntil(() => PlayerCoin.IsDone && EnemyCoin.IsDone);
+        yield return new WaitUntil(() => player.IsDone && enemy.IsDone);
 
         Debug.Log("합 진행 시간 종료후");
 
@@ -54,11 +63,11 @@ public class ClashSystem : MonoBehaviour
     // 전투 종료 후 최종위력(BaskicSkillValue + ClashPower)에 따라 승자 결정
     private void ClashResult()
     {
-        int player = (int)UnitType.Player;
-        int enemy = (int)UnitType.Enemy;
+        CoinSystem player = BattleManager.Instance.PlayerCoin;
+        CoinSystem enemy = BattleManager.Instance.EnemyCoin;
 
-        int playerClash = BattleSkill[player].BasicSkillValue + PlayerCoin.ClashPower;
-        int enemyClash = BattleSkill[enemy].BasicSkillValue + EnemyCoin.ClashPower;
+        int playerClash = _playerSkill.BasicSkillValue + player.ClashPower;
+        int enemyClash = _enemySkill.BasicSkillValue + enemy.ClashPower;
 
         Debug.Log($"캐릭터: {playerClash} / 에너미: {enemyClash}");
 
@@ -80,15 +89,8 @@ public class ClashSystem : MonoBehaviour
             
         }
 
-        PlayerCoin.GetReset();
-        EnemyCoin.GetReset();
+        player.GetCoinReset();
+        enemy.GetCoinReset();
     }
 
-    public void GetReset()
-    {
-        PlayerCoin.GetReset();
-        EnemyCoin.GetReset();
-        Array.Clear(BattleUnit, 0, BattleUnit.Length);
-        Array.Clear(BattleSkill, 0, BattleUnit.Length);
-    }
 }

@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class FaustView : MonoBehaviour
+public class PurpleGnomeView : MonoBehaviour
 {
     private Animator _animator;
-
 
     private void Awake()
     {

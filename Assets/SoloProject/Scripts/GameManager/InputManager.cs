@@ -4,22 +4,33 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    private bool _IsInput;
+    private RaycastHit _hit;
+
     public void OnClick(InputAction.CallbackContext ctx)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("UI를 클릭");
-            return;
-        }
-
         Vector2 mousePos = Mouse.current.position.ReadValue();
         
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        _IsInput = Physics.Raycast(ray, out _hit);
+    }
+
+    private void Update()
+    {
+        if (_IsInput)
         {
-            Debug.Log(hit);
-            Debug.Log(hit.transform);
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("UI를 클릭");
+                _IsInput = false;
+                return;
+            }
+
+            IClickable target = _hit.transform.GetComponent<IClickable>();
+            target.OnCklick();
+
+            _IsInput = false;
         }
     }
 }

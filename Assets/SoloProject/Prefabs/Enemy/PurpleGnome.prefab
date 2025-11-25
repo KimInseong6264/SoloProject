@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8035206254656557835}
-  - component: {fileID: 7906644830868781772}
   - component: {fileID: 7254065356870749399}
   - component: {fileID: 1757755527596006988}
+  - component: {fileID: -8355996556722556403}
+  - component: {fileID: -3864051622036695531}
+  - component: {fileID: 6252670772992048775}
   m_Layer: 0
   m_Name: PurpleGnome
   m_TagString: Untagged
@@ -34,19 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7906644830868781772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6594367208993217044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09149a7c948b98c48bb880569c4a5060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurpleGnome
-  _unit: {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
 --- !u!212 &7254065356870749399
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,3 +116,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8355996556722556403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594367208993217044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d45fdce6511154fbaf7031ba1db14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PurpleGnomeView
+--- !u!114 &-3864051622036695531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594367208993217044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f666593c57a56bd448ea4f53b5ffebba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PurpleGnomeControler
+  _unit: {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
+--- !u!136 &6252670772992048775
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594367208993217044}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.13499999
+  m_Height: 0.27999997
+  m_Direction: 1
+  m_Center: {x: -0.04, y: 0, z: 0}
