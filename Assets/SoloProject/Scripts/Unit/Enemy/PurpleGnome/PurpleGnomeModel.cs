@@ -1,24 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurpleGnome : MonoBehaviour, IUnit
+public class PurpleGnomeModel : IUnit
 {
-    [field: SerializeField] private UnitData _unit;
-
-    public string Name {  get; private set; }
+    public string Name { get; private set; }
 
     public UnitStat Stat { get; private set; }
 
     public List<ISkill> SkillList { get; private set; }
 
+    public Transform CurrentPos {  get; private set; }
 
-    private void Awake()
+    public PurpleGnomeModel(UnitData unit)
     {
-        //_view = GetComponent<FaustView>();
-
-        Init(_unit);
+        Init(unit);
         SkillList = new List<ISkill>();
-        foreach (var skill in _unit.SkillList)
+        foreach (var skill in unit.SkillList)
         {
             SkillList.Add(new PurpleGnomeSkill1(skill));
         }
@@ -32,15 +29,22 @@ public class PurpleGnome : MonoBehaviour, IUnit
     }
 
     // 스킬 초기화 메서드
-    public void InitSkillList()
+    public void InitSkillList(UnitData unit)
     {
         for (int i = 0; i < SkillList.Count; i++)
         {
-            SkillList[i].Init(_unit.SkillList[i]);
+            SkillList[i].Init(unit.SkillList[i]);
         }
+    }
+
+    public void SetPos(Transform pos)
+    {
+        CurrentPos = pos;
     }
 
     public void TakeDamage(int damage)
     {
+        Stat = Stat.SetChangeStat(hp: -damage);
+        UnityEngine.Debug.Log(Stat.HP);
     }
 }

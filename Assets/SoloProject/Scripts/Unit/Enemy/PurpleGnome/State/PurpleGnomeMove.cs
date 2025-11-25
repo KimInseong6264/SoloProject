@@ -1,52 +1,57 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class FaustMove : IUnitState
+public class PurpleGnomeMove : IUnitState
 {
-    private FaustControler _faust;
+    private PurpleGnomeControler _purpleGnome;
     private Transform _transform;
-    private float _distance = 0f;
+    float _distance = 0f;
     private float _speed = 8f;
 
-    public FaustMove(FaustControler faust)
+    public PurpleGnomeMove(PurpleGnomeControler purpleGnome)
     {
-        _faust = faust;
-        _transform = faust.transform;
+        _purpleGnome = purpleGnome;
     }
 
     public void Enter()
     {
         _distance = Vector3.Magnitude(GetDirection());
 
-        _faust.View.OnMoveAni(_distance);
+        _purpleGnome.View.OnMoveAni(_distance);
     }
 
     public void Exit()
     {
-        Debug.Log("파우스트 이동 종료");
+        Debug.Log("노움 이동 종료");
     }
 
     public void Update()
     {
         Vector3 dir = GetDirection();
         SetMoveing(dir);
-
         _distance = Vector3.SqrMagnitude(dir);
+
+
         if (_distance < 2f)
-            _faust.SetState(State.Clash);
+            _purpleGnome.SetState(State.Clash);
+
     }
 
+    // 유닛 사이의 거리 구하기
     private Vector3 GetDirection()
     {
         Vector3 playerPos = BattleManager.Instance.BattleUnit[UnitType.Player].CurrentPos.position;
         Vector3 enemyPos = BattleManager.Instance.BattleUnit[UnitType.Enemy].CurrentPos.position;
 
-        return enemyPos - playerPos;
+        return playerPos- enemyPos;
     }
 
+    // 저장된 트랜스폼값 이동(Player인지,Enemy인지 확인)
+    // Controller의 포지션값에 넣어줘야 함
     private void SetMoveing(Vector3 direction)
     {
-        _transform = BattleManager.Instance.BattleUnit[UnitType.Player].CurrentPos;
-        
+        _transform = BattleManager.Instance.BattleUnit[UnitType.Enemy].CurrentPos;
+
         _transform.Translate
             (direction.normalized * Time.deltaTime * _speed);
     }

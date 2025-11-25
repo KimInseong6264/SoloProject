@@ -24,7 +24,7 @@ public class PurpleGnomeSill1Motion2 : ISkillMotion
 
     public void Enter()
     {
-
+        
     }
 
     public void Exit()
@@ -34,6 +34,10 @@ public class PurpleGnomeSill1Motion2 : ISkillMotion
 
     public void Update()
     {
+        // 스킬애니메이션 트리거
+        _skill.GetMotion();
+        Debug.Log("보라노움 2모션 애니메이션");
+
         // BattleManager에서 메서드 빌려와서 코루틴 실행
         BattleManager system = BattleManager.Instance;
         system.GetMotionPlay(MotionPlay());
@@ -42,7 +46,7 @@ public class PurpleGnomeSill1Motion2 : ISkillMotion
     public IEnumerator MotionPlay()
     {
         WaitForSeconds wait = new WaitForSeconds(_motionTime);
-        Debug.Log("파우스트 스킬모션2 진행");
+        Debug.Log("보라노움 스킬모션2 진행");
         yield return wait;
 
         // 데미지 스텝 종료

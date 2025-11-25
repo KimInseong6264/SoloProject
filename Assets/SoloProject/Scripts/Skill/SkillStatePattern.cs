@@ -19,7 +19,6 @@ public abstract class SkillStatePattern
     // 스킬 사용
     public void StartSkillMotion()
     {
-        _currentMotion.Enter();
         _currentMotion.Update();
     }
 }

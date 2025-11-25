@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6836878807638751573}
   - component: {fileID: -4662373857592130540}
   - component: {fileID: -1708275941303091910}
+  - component: {fileID: 7231361268959877014}
   m_Layer: 0
   m_Name: Faust
   m_TagString: Untagged
@@ -140,3 +141,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FaustControler
   _unit: {fileID: 11400000, guid: b3544cf6dd8d6fd4ebf322d79a341e7f, type: 2}
+--- !u!136 &7231361268959877014
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243831717384786993}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17052586
+  m_Height: 0.72
+  m_Direction: 1
+  m_Center: {x: 0.01, y: 0, z: -0.020525819}
