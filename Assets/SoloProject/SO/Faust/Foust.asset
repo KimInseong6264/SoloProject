@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de80c786ed14fd54d83cc71ce5ad2809, type: 3}
+  m_Name: Foust
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  <InitialName>k__BackingField: "\uD30C\uC6B0\uC6C5"
+  <InitialStat>k__BackingField:
+    _hp: 100
+    _att: 15
+    _def: 3
+  <SkillList>k__BackingField:
+  - {fileID: 11400000, guid: 5b588b65e94f2b74299aee3aa88f1a5b, type: 2}
+  - {fileID: 11400000, guid: 84feacf3a61a42b489b10b504022b4ce, type: 2}
+  <Prefab>k__BackingField: {fileID: 5243831717384786993, guid: 42baeb15a0e7c6f428b84b45fe50ac6b, type: 3}
