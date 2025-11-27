@@ -15,14 +15,14 @@ public class FaustMove : IUnitState
 
     public void Enter()
     {
-        float distance = Vector3.Magnitude(GetDirection());
+        _faust.View.OnMoveAni();
 
-        _faust.View.OnMoveAni(distance);
+        float distance = Vector3.Magnitude(GetDirection());
     }
 
     public void Exit()
     {
-        Debug.Log("파우스트 이동 종료");
+
     }
 
     public void Update()

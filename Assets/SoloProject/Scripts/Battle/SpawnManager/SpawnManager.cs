@@ -1,47 +1,26 @@
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [field: SerializeField] public List<GameObject> SpawnList {  get; private set; }
+    public static SpawnManager Instance;
 
-    private List<ISpawn> _spawnCountList;
-    private ISpawn _currentSpawnCount;
+    [field: SerializeField] public UnitSpawner[] Spawn {  get; private set; }
+    [field: SerializeField] public WaveManager Wave { get; private set; }
 
-    public Transform SpawnPoint { get; private set; }
 
-    
+
     private void Awake()
     {
-        SpawnPoint = GetComponent<Transform>();
-        _spawnCountList = new List<ISpawn>();
-
-        _spawnCountList.Add(new Spawn1(this));
-        _spawnCountList.Add(new Spawn2(this));
-        _spawnCountList.Add(new Spawn3(this));
+        Instance = GetComponent<SpawnManager>();
     }
 
-    public void SetSpawnCount()
+    public void UnitSpawn()
     {
-        int index = SpawnList.Count - 1;
+        Spawn[0].UpdateSpawn(UnitType.Player);
+        Spawn[1].UpdateSpawn(UnitType.Enemy);
 
-        if (_currentSpawnCount == _spawnCountList[index])
-            return;
-
-        _currentSpawnCount?.Exit();
-        _currentSpawnCount = _spawnCountList[index];
-        _currentSpawnCount.Enter();
     }
-
-    public void UpdateSpawn()
-    {
-        SetSpawnCount();
-        _currentSpawnCount.Update();
-    }
-
-    private void Start()
-    {
-        UpdateSpawn();
-    }
-
 }

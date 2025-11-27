@@ -16,9 +16,9 @@ public class PurpleGnomeMove : IUnitState
 
     public void Enter()
     {
-        float distance = Vector3.Magnitude(GetDirection());
+        _purpleGnome.View.OnMoveAni();
 
-        _purpleGnome.View.OnMoveAni(distance);
+        float distance = Vector3.Magnitude(GetDirection());
     }
 
     public void Exit()

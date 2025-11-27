@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PurpleGnomeClash : IUnitState
@@ -11,8 +12,11 @@ public class PurpleGnomeClash : IUnitState
 
     public void Enter()
     {
+
+        _purpleGnome.View.OnClashAni();
+
         OnClashAni();
-        _purpleGnome.SetState(State.Attack);
+
     }
 
     public void Exit()
@@ -30,7 +34,11 @@ public class PurpleGnomeClash : IUnitState
         int playerClash = BattleManager.Instance.PlayerCoin.ClashPower;
         int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
 
-        if (playerClash > enemyClash)
-            _purpleGnome.View.OnClashAni();
+        if (enemyClash >= playerClash)
+            _purpleGnome.SetState(State.Attack);
+        else if (enemyClash == playerClash)
+            _purpleGnome.SetState(State.Idle);
+        else
+            _purpleGnome.SetState(State.Hurt);
     }
 }

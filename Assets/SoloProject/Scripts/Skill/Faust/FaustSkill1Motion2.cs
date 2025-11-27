@@ -11,8 +11,8 @@ public class FaustSkill1Motion2 : ISkillMotion
     private int _coinCount;
     private int _basicSkillValue;
     private int _coinValue;
+    private float _motionTime;
     private int _defMultiplier = 5;
-    private float _motionTime = 5;
 
 
     // 모션 추가시, MotionList에 생성해야 함
@@ -22,6 +22,7 @@ public class FaustSkill1Motion2 : ISkillMotion
         _coinCount = skill.CoinCount;
         _basicSkillValue = skill.BasicSkillValue;
         _coinValue = skill.CoinValue;
+        _motionTime = skill.MotionTime;
     }
 
     public void Enter()
@@ -43,7 +44,7 @@ public class FaustSkill1Motion2 : ISkillMotion
         system.BattleUnit[UnitType.Enemy].TakeDamage(GetDamage());
 
         // BattleManager에서 메서드 빌려와서 코루틴 실행
-        system.GetMotionPlay(MotionPlay());
+        system.StartCoroutine(MotionPlay());
     }
 
     public IEnumerator MotionPlay()

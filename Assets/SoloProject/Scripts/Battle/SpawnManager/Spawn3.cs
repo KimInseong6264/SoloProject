@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class Spawn3 : ISpawn
 {
-    private SpawnManager _spawnManager;
-    private List<GameObject> _spawnList;
+    private UnitSpawner _spawnManager;
+    private List<UnitDataSO> _spawnList;
     private Vector3 _spawnPos;
+    private UnitType _spawnType;
     private float _distance = 4;
 
-    public Spawn3(SpawnManager spawnManager)
+    public Spawn3(UnitSpawner spawnManager)
     {
         _spawnManager = spawnManager;
         _spawnPos = spawnManager.SpawnPoint.position;
-        _spawnList = spawnManager.SpawnList;
     }
 
     public void Enter()
     {
-
+        _spawnType = _spawnManager.SpawnType;
+        if (_spawnType == UnitType.Player)
+            _spawnList = _spawnManager.PlayerList;
+        if (_spawnType == UnitType.Enemy)
+            _spawnList = _spawnManager.EnemyList;
     }
 
     public void Exit()
@@ -35,13 +39,13 @@ public class Spawn3 : ISpawn
         float z = _spawnPos.z;
 
         GameObject.Instantiate
-            (_spawnList[0], new Vector3(x - distanceX, y, z - distanceZ), Quaternion.identity);
+            (_spawnList[0].Prefab, new Vector3(x - distanceX, y, z - distanceZ), Quaternion.identity);
 
         GameObject.Instantiate
-            (_spawnList[1], new Vector3(x + ( distanceX / 2), y, z + distanceZ), Quaternion.identity);
+            (_spawnList[1].Prefab, new Vector3(x + ( distanceX / 2), y, z + distanceZ), Quaternion.identity);
 
         GameObject.Instantiate
-            (_spawnList[2], new Vector3(x + distanceX, y, z - distanceZ), Quaternion.identity);
+            (_spawnList[2].Prefab, new Vector3(x + distanceX, y, z - distanceZ), Quaternion.identity);
 
     }
 }

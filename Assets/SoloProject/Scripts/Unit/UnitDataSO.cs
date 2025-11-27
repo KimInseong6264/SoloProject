@@ -12,6 +12,8 @@ public class UnitDataSO : ScriptableObject
     [field: SerializeField] public UnitStat InitialStat { get; private set; }
 
     [field: SerializeField] public List<SkillDataSO> SkillList { get; private set; }
+
+    [field: SerializeField] public GameObject Prefab {  get; private set; }
 }
 
 

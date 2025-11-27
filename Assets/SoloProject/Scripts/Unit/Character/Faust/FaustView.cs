@@ -18,21 +18,9 @@ public class FaustView : MonoBehaviour
         _scrollbar.size = hp / maxHp;
     }
 
-    public void UpdateHp(int hp)
-    {
-        float HP = (float)hp;
-        _scrollbar.size = HP / HP;
-    }
-
-    public void OnMoveAni(float distance)
-    {
-        bool IsMove = distance > 1f;
-        _animator.SetBool("Distance", IsMove);
-    }
-
+    public void OnIdleAni() => _animator.SetInteger("Behaviour", 0);
+    public void OnMoveAni() => _animator.SetInteger("Behaviour", 1);
+    public void OnHurtAni() => _animator.SetInteger("Behaviour", 2);
     public void OnSkillAni(int i) => _animator.SetTrigger("Skill" + i);
-
     public void OnClashAni() => _animator.SetTrigger("Clash");
-    
-    public void OnIdleAni() => _animator.SetBool("Distance", false);
 }

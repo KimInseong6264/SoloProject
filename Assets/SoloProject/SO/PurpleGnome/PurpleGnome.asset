@@ -20,3 +20,4 @@ MonoBehaviour:
   <SkillList>k__BackingField:
   - {fileID: 11400000, guid: 8623c0a5fd8f2de44acc1ab4018dfdf0, type: 2}
   - {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
+  <Prefab>k__BackingField: {fileID: 6594367208993217044, guid: 2e9bfac03bfd915459747f5d80664156, type: 3}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FaustClash : IUnitState
@@ -11,8 +12,9 @@ public class FaustClash : IUnitState
 
     public void Enter()
     {
+        _faust.View.OnClashAni();
+
         OnClashAni();
-        _faust.SetState(State.Attack);
     }
 
     public void Exit()
@@ -31,6 +33,10 @@ public class FaustClash : IUnitState
         int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
 
         if(playerClash > enemyClash)
-            _faust.View.OnClashAni();
+            _faust.SetState(State.Attack);
+        else if(playerClash == enemyClash)
+            _faust.SetState(State.Idle);
+        else
+            _faust.SetState(State.Hurt);
     }
 }

@@ -22,7 +22,7 @@ public class ClashUI : MonoBehaviour
     }
     public void GetEnemyToss()
     {
-        CoinSystem enemyCoin = BattleManager.Instance.PlayerCoin;
+        CoinSystem enemyCoin = BattleManager.Instance.EnemyCoin;
         _enemyCoin.text = "에너미 코인: " + enemyCoin.ClashPower;
     }
 }

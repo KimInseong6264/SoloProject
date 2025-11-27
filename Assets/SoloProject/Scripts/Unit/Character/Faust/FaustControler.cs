@@ -15,6 +15,10 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
         UnitModel = new FaustModel(_unit, this);
         UnitModel.SetPos(transform);
         View.GetHpBar(UnitModel.Stat.HP, _unit.InitialStat.HP);
+
+
+        BattleManager.Instance.SetSelectedList(UnitModel);       // 도감을 만들어서 도감에서 먼저 선택 후에 받아오는 형식으로 변경해야 함
+        
     }
 
     private void Start()
@@ -23,12 +27,13 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
         SetSkillMotion();
 
         UnitModel.OnChangeHp += View.GetHpBar;
+        
     }
 
     private void Update()
     {
-        Debug.LogWarning(UnitModel.CurrentState);
-        OnMove();
+        Debug.LogWarning("파우스트" + UnitModel.CurrentState);
+        UpdateState();
     }
 
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드
@@ -42,12 +47,14 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
 
     public void SetState(State newState) => UnitModel.SetState(newState);
 
-    private void OnMove()
+    private void UpdateState()
     {
-        if (UnitModel.CurrentState == UnitModel.StateList[State.Move])
-        {
-            UnitModel.CurrentState.Update();
-        }
+        if (UnitModel.CurrentState == UnitModel.StateList[State.Idle] || 
+            UnitModel.CurrentState == UnitModel.StateList[State.Attack] ||
+            UnitModel.CurrentState == UnitModel.StateList[State.Clash])
+            return;
+
+        UnitModel.CurrentState.Update();
     }
 
     public void OnCklick() => 

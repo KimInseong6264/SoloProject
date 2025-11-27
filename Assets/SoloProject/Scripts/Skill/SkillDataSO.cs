@@ -14,5 +14,7 @@ public class SkillDataSO : ScriptableObject
     // 스킬의 코인값(합의 위력과 데미지를 결정)
     [field: SerializeField] public int CoinValue { get; private set; }
 
+    [field: SerializeField] public float MotionTime { get; private set; }
+
 
 }

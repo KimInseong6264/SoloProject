@@ -3,6 +3,7 @@ using UnityEngine;
 public class PurpleGnomeAttack : IUnitState
 {
     private PurpleGnomeController _purpleGnome;
+    private Skill _skill;
 
     public PurpleGnomeAttack(PurpleGnomeController purpleGnome)
     {
@@ -11,7 +12,7 @@ public class PurpleGnomeAttack : IUnitState
 
     public void Enter()
     {
-        
+        OnSkill();
     }
 
     public void Exit()
@@ -22,5 +23,11 @@ public class PurpleGnomeAttack : IUnitState
     public void Update()
     {
 
+    }
+
+    private void OnSkill()
+    {
+        _skill = BattleManager.Instance.BattleSkill[UnitType.Enemy];
+        _skill.UpateSkill();
     }
 }

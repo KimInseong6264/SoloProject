@@ -7,6 +7,7 @@ public abstract class Skill
     public int CoinCount { get; private set; }
     public int BasicSkillValue { get; private set; }
     public int CoinValue { get; private set; }
+    public float MotionTime { get; private set; }
 
     // 스킬 실행시 해당 모션의 애니메이션을 구독시켜서 재생
     public event Action<int> OnSkillMotion;
@@ -35,6 +36,7 @@ public abstract class Skill
         CoinCount = skill.CoinCount;
         BasicSkillValue = skill.BasicSkillValue;
         CoinValue = skill.CoinValue;
+        MotionTime = skill.MotionTime;
     }
 
 

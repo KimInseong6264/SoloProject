@@ -48,8 +48,6 @@ public class Unit
     public void TakeDamage(int damage)
     {
         Stat = Stat.SetChangeStat(hp: -damage);
-        Debug.Log(Stat);
-        Debug.Log(Stat.HP);
 
         OnChangeHp?.Invoke(Stat.HP, _initialStat.HP);
     }

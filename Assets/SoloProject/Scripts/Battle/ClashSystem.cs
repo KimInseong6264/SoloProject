@@ -30,8 +30,8 @@ public class ClashSystem : MonoBehaviour
             Debug.LogWarning("배틀 할 대상이 명확하지 않습니다.");
             return;
         }
-        BattleManager.Instance.BattleUnit[UnitType.Player].SetState(State.Move);
-        BattleManager.Instance.BattleUnit[UnitType.Enemy].SetState(State.Move);
+        _player.SetState(State.Move);
+        _enemy.SetState(State.Move);
 
         StartCoroutine(Clash());
     }
@@ -40,17 +40,14 @@ public class ClashSystem : MonoBehaviour
     // 전투 시 합이라는 것을 진행(코인토스로 승부 겨루기)
     private IEnumerator Clash()
     {
-        Debug.Log("합진행");
         CoinSystem player = BattleManager.Instance.PlayerCoin;
         CoinSystem enemy = BattleManager.Instance.EnemyCoin;
 
         StartCoroutine(player.GetCoinToss(_playerSkill));
 
-        StartCoroutine(player.GetCoinToss(_enemySkill));
+        StartCoroutine(enemy.GetCoinToss(_enemySkill));
 
         yield return new WaitUntil(() => player.IsDone && enemy.IsDone);
-
-        Debug.Log("합 진행 시간 종료후");
 
         ClashResult();
     }
@@ -80,12 +77,8 @@ public class ClashSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("재대결");
-            
+            BattleManager.Instance.Damage.GetEndDamgaeStep();
         }
-
-        player.GetCoinReset();
-        enemy.GetCoinReset();
     }
 
 }

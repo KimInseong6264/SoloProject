@@ -10,10 +10,6 @@ public enum SkillNum
     First, Second
 }
 
-public enum UnitType
-{
-    Player, Enemy
-}
 
 public enum Motion
 {
@@ -22,5 +18,18 @@ public enum Motion
 
 public enum State
 {
-    Idle, Move, Clash, Attack
+    Idle, Move, Hurt, Clash, Attack
+}
+public enum UnitType
+{
+    Player, Enemy
+}
+
+public enum Player
+{
+    Faust, End
+}
+public enum Enemy
+{
+    PurpleGnome, End
 }

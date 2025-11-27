@@ -16,6 +16,7 @@ public class PurpleGnomeModel : Unit
             StateList = new Dictionary<State, IUnitState>();
             StateList.Add(State.Idle, new PurpleGnomeIdle(controller));
             StateList.Add(State.Move, new PurpleGnomeMove(controller));
+            StateList.Add(State.Hurt, new PurpleGnomeHurt(controller));
             StateList.Add(State.Clash, new PurpleGnomeClash(controller));
             StateList.Add(State.Attack, new PurpleGnomeAttack(controller));
             CurrentState = StateList[State.Idle];

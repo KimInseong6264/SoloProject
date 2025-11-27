@@ -18,6 +18,7 @@ public class FaustModel : Unit
         StateList = new Dictionary<State, IUnitState>();
         StateList.Add(State.Idle, new FaustIdle(controler));
         StateList.Add(State.Move, new FaustMove(controler));
+        StateList.Add(State.Hurt, new FaustHurt(controler));
         StateList.Add(State.Clash, new FaustClash(controler));
         StateList.Add(State.Attack, new FaustAttack(controler));
         CurrentState = StateList[State.Idle];

@@ -21,11 +21,16 @@ public class PurpleGnomeController : MonoBehaviour, IUnitInteractive, IClickable
     {
         // 스킬 애니메이션과 스킬 모션(상태패턴)을 연결
         SetSkillMotion();
+        SetEnemyBattle();
+
+        UnitModel.OnChangeHp += View.GetHpBar;
+        BattleManager.Instance.Damage.OnEndDamageStep += SetEnemyBattle;
     }
 
     private void Update()
     {
-        OnMove();
+        Debug.LogWarning("노움" + UnitModel.CurrentState);
+        UpdateState();
     }
 
 
@@ -42,15 +47,25 @@ public class PurpleGnomeController : MonoBehaviour, IUnitInteractive, IClickable
 
     public void SetState(State state) => UnitModel.SetState(state);
 
-    private void OnMove()
+    private void UpdateState()
     {
-        if (UnitModel.CurrentState == UnitModel.StateList[State.Move])
-        {
-            UnitModel.CurrentState.Update();
-        }
+        if (UnitModel.CurrentState == UnitModel.StateList[State.Idle] ||
+            UnitModel.CurrentState == UnitModel.StateList[State.Attack] ||
+            UnitModel.CurrentState == UnitModel.StateList[State.Clash])
+            return;
+
+        UnitModel.CurrentState.Update();
     }
 
     public void OnCklick() => 
         BattleManager.Instance.BattleUnit[UnitType.Enemy] = UnitModel;
+
+
+
+    public void SetEnemyBattle()
+    {
+        int i = UnityEngine.Random.Range(0, 2);
+        BattleManager.Instance.SetBattle(UnitType.Enemy, UnitModel, UnitModel.SkillList[i]);
+    }
 
 }
