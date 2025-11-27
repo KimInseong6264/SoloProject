@@ -20,7 +20,7 @@ public class CoinSystem
         return random;
     }
 
-    public IEnumerator GetCoinToss(Skill skill, float waitTime = 1)
+    public IEnumerator GetCoinToss(Skill skill, float waitTime = 0)
     {
         WaitForSeconds wait = new WaitForSeconds(waitTime / skill.CoinCount);
         int random;
@@ -29,7 +29,6 @@ public class CoinSystem
         {
             random = (int)GetCoinToss();
             ClashPower += random * skill.CoinValue;
-            Debug.Log($"{skill.SkillName}의 코인값{random}");
             yield return wait;
         }
         IsDone = true;

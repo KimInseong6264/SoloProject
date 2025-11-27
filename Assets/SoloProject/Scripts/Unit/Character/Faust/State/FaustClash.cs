@@ -29,8 +29,10 @@ public class FaustClash : IUnitState
 
     private void OnClashAni()
     {
-        int playerClash = BattleManager.Instance.PlayerCoin.ClashPower;
-        int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
+        BattleManager system = BattleManager.Instance;
+
+        int playerClash = system.BattleSkill[UnitType.Player].BasicSkillValue   + system.PlayerCoin.ClashPower;
+        int enemyClash = system.BattleSkill[UnitType.Enemy].BasicSkillValue + system.EnemyCoin.ClashPower;
 
         if(playerClash > enemyClash)
             _faust.SetState(State.Attack);

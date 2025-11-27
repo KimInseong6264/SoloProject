@@ -29,8 +29,13 @@ public class PurpleGnomeController : MonoBehaviour, IUnitInteractive, IClickable
 
     private void Update()
     {
-        Debug.LogWarning("³ë¿ò" + UnitModel.CurrentState);
         UpdateState();
+
+
+        if (UnitModel.Stat.HP == 0)
+        {
+            GameManager.Instance.Scene.Load(2);
+        }
     }
 
 

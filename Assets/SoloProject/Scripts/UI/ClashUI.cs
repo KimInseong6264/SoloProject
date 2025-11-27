@@ -15,14 +15,26 @@ public class ClashUI : MonoBehaviour
 
     public void GetPlayerToss()
     {
-        CoinSystem playerCoin = BattleManager.Instance.PlayerCoin;
+        BattleManager system = BattleManager.Instance;
 
-        _playerCoin.text = "플레이어 코인: " + playerCoin.ClashPower;
+        if (system.BattleSkill[UnitType.Player] == null)
+            return;
+
+        int playerClash = system.BattleSkill[UnitType.Player].BasicSkillValue + system.PlayerCoin.ClashPower;
+
+        _playerCoin.text = "기본 위력: " + playerClash;
 
     }
     public void GetEnemyToss()
     {
+        BattleManager system = BattleManager.Instance;
+
+        if (system.BattleSkill == null)
+            return;
+
+        int enemyClash = system.BattleSkill[UnitType.Enemy].BasicSkillValue + system.EnemyCoin.ClashPower;
+
         CoinSystem enemyCoin = BattleManager.Instance.EnemyCoin;
-        _enemyCoin.text = "에너미 코인: " + enemyCoin.ClashPower;
+        _enemyCoin.text = "기본 위력: " + enemyClash;
     }
 }

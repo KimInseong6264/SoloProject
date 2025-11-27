@@ -32,8 +32,10 @@ public class FaustControler : MonoBehaviour, IUnitInteractive, IClickable
 
     private void Update()
     {
-        Debug.LogWarning("파우스트" + UnitModel.CurrentState);
         UpdateState();
+
+        if(UnitModel.Stat.HP == 0)
+            GameManager.Instance.Scene.Load(3);
     }
 
     // 스킬 애니메이션을 스킬 모션에 연결하는 메서드

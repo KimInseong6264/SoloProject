@@ -47,6 +47,9 @@ public class Unit
     // 데미지를 입는 메서드
     public void TakeDamage(int damage)
     {
+        if (damage < 0)
+            damage = 1;
+
         Stat = Stat.SetChangeStat(hp: -damage);
 
         OnChangeHp?.Invoke(Stat.HP, _initialStat.HP);

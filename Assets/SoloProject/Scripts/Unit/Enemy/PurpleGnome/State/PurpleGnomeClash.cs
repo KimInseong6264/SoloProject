@@ -31,10 +31,12 @@ public class PurpleGnomeClash : IUnitState
 
     private void OnClashAni()
     {
-        int playerClash = BattleManager.Instance.PlayerCoin.ClashPower;
-        int enemyClash = BattleManager.Instance.EnemyCoin.ClashPower;
+        BattleManager system = BattleManager.Instance;
 
-        if (enemyClash >= playerClash)
+        int playerClash = system.BattleSkill[UnitType.Player].BasicSkillValue + system.PlayerCoin.ClashPower;
+        int enemyClash = system.BattleSkill[UnitType.Enemy].BasicSkillValue + system.EnemyCoin.ClashPower;
+
+        if (enemyClash > playerClash)
             _purpleGnome.SetState(State.Attack);
         else if (enemyClash == playerClash)
             _purpleGnome.SetState(State.Idle);

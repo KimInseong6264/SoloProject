@@ -7,7 +7,6 @@ public class BattleUI : MonoBehaviour
 {
     [SerializeField] private List<Button> _playerButton;
     [SerializeField] private List<Text> _skillSlotText;
-    public Button StartButton;
 
     private Stack<Skill> _skillUI;
     private List<Skill> _ShuffleList;

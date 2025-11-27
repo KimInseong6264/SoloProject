@@ -65,7 +65,6 @@ public class ClashSystem : MonoBehaviour
 
         if (playerClash > enemyClash)
         {
-            Debug.Log(OnDamageStep);
             OnDamageStep?.Invoke(UnitType.Player);
             Debug.Log($"Ä³¸¯ÅÍ ½Â");
         }

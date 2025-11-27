@@ -24,7 +24,7 @@ public struct UnitStat
     [SerializeField] private int _att;
     [SerializeField] private int _def;
 
-    public int HP => _hp;
+    public int HP => _hp > 0? _hp: _hp = 0;
     public int Att => _att;
     public int Def => _def;
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   <InitialStat>k__BackingField:
     _hp: 156
     _att: 20
-    _def: 1
+    _def: 3
   <SkillList>k__BackingField:
   - {fileID: 11400000, guid: 8623c0a5fd8f2de44acc1ab4018dfdf0, type: 2}
   - {fileID: 11400000, guid: daaa3367d4c756c4e99eb19610009b9c, type: 2}
