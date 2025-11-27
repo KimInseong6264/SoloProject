@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         SelectedPlayer = new List<UnitDataSO>();
+    }
+
+    public void Start()
+    {
+        SelectedPlayer.Add(DataBase.GetUnitDat(Player.Faust));
     }
 
     // 캐릭터 선택 창에서 전투 출전 유닛을 선택,취소하는 메서드

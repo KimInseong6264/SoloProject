@@ -20,6 +20,7 @@ public class UnitDataSO : ScriptableObject
 [Serializable]
 public struct UnitStat
 {
+    
     [SerializeField] private int _hp;
     [SerializeField] private int _att;
     [SerializeField] private int _def;
