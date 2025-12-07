@@ -1,8 +1,8 @@
 
 
 public enum CoinType
-{
-    µÚ, ¾Õ
+{ 
+    ë’¤, ì•ž
 }
 
 public enum SkillNum

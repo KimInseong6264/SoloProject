@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// À¯´ÖµéÀÇ ÃÊ±â°ªÀ» ¼³Á¤ÇØ ÁÙ ¼ö ÀÖÀ½
-// ·±Å¸ÀÓ Áß¿¡µµ ÃÊ±âÈ­¸¦ À§ÇÑ °ªÀ¸·Î¸¸ º¸Á¸
+// ìœ ë‹›ë“¤ì˜ ì´ˆê¸°ê°’ì„ ì„¤ì •í•´ ì¤„ ìˆ˜ ìˆìŒ
+// ëŸ°íƒ€ì„ ì¤‘ì—ë„ ì´ˆê¸°í™”ë¥¼ ìœ„í•œ ê°’ìœ¼ë¡œë§Œ ë³´ì¡´
 [CreateAssetMenu(fileName = "Unit", menuName = "Unit/Unit")]
 public class UnitDataSO : ScriptableObject
 {

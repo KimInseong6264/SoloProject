@@ -9,10 +9,10 @@ public abstract class Skill
     public int CoinValue { get; private set; }
     public float MotionTime { get; private set; }
 
-    // ½ºÅ³ ½ÇÇà½Ã ÇØ´ç ¸ğ¼ÇÀÇ ¾Ö´Ï¸ŞÀÌ¼ÇÀ» ±¸µ¶½ÃÄÑ¼­ Àç»ı
+    // ìŠ¤í‚¬ ì‹¤í–‰ì‹œ í•´ë‹¹ ëª¨ì…˜ì˜ ì• ë‹ˆë©”ì´ì…˜ì„ êµ¬ë…ì‹œì¼œì„œ ì¬ìƒ
     public event Action<int> OnSkillMotion;
 
-    // ½ºÅ³¸ğ¼Ç ½ÇÇàÀ» À§ÇÑ »óÅÂ ÆĞÅÏ ÇÊµå
+    // ìŠ¤í‚¬ëª¨ì…˜ ì‹¤í–‰ì„ ìœ„í•œ ìƒíƒœ íŒ¨í„´ í•„ë“œ
     public Dictionary<Motion, ISkillMotion> MotionList { get; protected set; }
     protected ISkillMotion _currentMotion;
 
@@ -24,7 +24,7 @@ public abstract class Skill
         _currentMotion.Enter();
     }
 
-    // ½ºÅ³ »ç¿ë
+    // ìŠ¤í‚¬ ì‚¬ìš©
     public void UpateSkill()
     {
         _currentMotion.Update();
@@ -44,11 +44,11 @@ public abstract class Skill
     {
         if (OnSkillMotion == null)
         {
-            UnityEngine.Debug.LogError(this.SkillName + "½ºÅ³¸ğ¼Ç ±¸µ¶¾øÀ½");
+            UnityEngine.Debug.LogError(this.SkillName + "ìŠ¤í‚¬ëª¨ì…˜ êµ¬ë…ì—†ìŒ");
             return;
         }
 
-        // Á¤»ó»óÅÂ½Ã, ViewÀÇ OnSkillAni()°¡ ±¸µ¶
+        // ì •ìƒìƒíƒœì‹œ, Viewì˜ OnSkillAni()ê°€ êµ¬ë…
         OnSkillMotion?.Invoke(1);
     }
 }

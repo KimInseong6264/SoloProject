@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ´Ù¸¥ Å¬·¡½º¿¡¼­´Â ÄÚÀÎ ½Ã½ºÅÛÀ» new·Î ¹Ş¾Æ¿À±â¸¸ ÇÏ¸é µÊ
+// ë‹¤ë¥¸ í´ë˜ìŠ¤ì—ì„œëŠ” ì½”ì¸ ì‹œìŠ¤í…œì„ newë¡œ ë°›ì•„ì˜¤ê¸°ë§Œ í•˜ë©´ ë¨
 public class CoinSystem
 {
     public List<CoinType> TossResult { get; private set; } = new();
     public int ClashPower { get; private set; }
 
-    // ÄÚÀÎÅä½º°¡ ¸ğµÎ ³¡³ª¸é True
+    // ì½”ì¸í† ìŠ¤ê°€ ëª¨ë‘ ëë‚˜ë©´ True
     public bool IsDone { get; private set; } = false;
 
 
@@ -22,12 +22,11 @@ public class CoinSystem
 
     public IEnumerator GetCoinToss(Skill skill, float waitTime = 0)
     {
-        WaitForSeconds wait = new WaitForSeconds(waitTime / skill.CoinCount);
-        int random;
+        var wait = new WaitForSeconds(waitTime / skill.CoinCount);
 
         for (int i = 0; i < skill.CoinCount; i++)
         {
-            random = (int)GetCoinToss();
+            int random = (int)GetCoinToss();
             ClashPower += random * skill.CoinValue;
             yield return wait;
         }

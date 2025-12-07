@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// ÇÕ ÀÌÈÄ µ¥¹ÌÁö °ü·Ã Å¬·¡½º
+// í•© ì´í›„ ë°ë¯¸ì§€ ê´€ë ¨ í´ë˜ìŠ¤
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance;
@@ -23,15 +23,15 @@ public class BattleManager : MonoBehaviour
 
 
 
-    public List<Unit> SelectedPlayer { get; private set; } = new();     // µµ°¨À» ¸¸µé¾î¼­ µµ°¨¿¡¼­ ¸ÕÀú ¼±ÅÃ ÈÄ¿¡ ¹Ş¾Æ¿À´Â Çü½ÄÀ¸·Î º¯°æÇØ¾ß ÇÔ
+    public List<Unit> SelectedPlayer { get; private set; } = new();     // ë„ê°ì„ ë§Œë“¤ì–´ì„œ ë„ê°ì—ì„œ ë¨¼ì € ì„ íƒ í›„ì— ë°›ì•„ì˜¤ëŠ” í˜•ì‹ìœ¼ë¡œ ë³€ê²½í•´ì•¼ í•¨
 
     public event Action OnSeleted;
 
-    // ¹èÆ² Áß »ç¿ëÇÒ ÄÚÀÎ °ü¸®
+    // ë°°í‹€ ì¤‘ ì‚¬ìš©í•  ì½”ì¸ ê´€ë¦¬
     public CoinSystem PlayerCoin { get; private set; } = new();
     public CoinSystem EnemyCoin { get; private set; } = new();
 
-    // ¹èÆ²ÇÒ À¯´Ö°ú ½ºÅ³ ¸®½ºÆ®
+    // ë°°í‹€í•  ìœ ë‹›ê³¼ ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸
     public Dictionary<UnitType, Unit> BattleUnit { get; private set; }
     public Dictionary<UnitType, Skill> BattleSkill { get; private set; }
 
@@ -52,10 +52,10 @@ public class BattleManager : MonoBehaviour
         BattleSkill[unitType] = skill;
     }
 
-    // ¹èÆ²ÇÒ ´ë»ó ¸®½ºÆ®¿¡ Ãß°¡
+    // ë°°í‹€í•  ëŒ€ìƒ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
     public void SetBattle(UnitType unitType, Unit unit) => BattleUnit[unitType] = unit;
 
-    // ¹èÆ²ÇÒ ´ë»óÀÇ ¼±ÅÃ ½ºÅ³ ¸®½ºÆ®¿¡ Ãß°¡
+    // ë°°í‹€í•  ëŒ€ìƒì˜ ì„ íƒ ìŠ¤í‚¬ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
     public void SetBattle(UnitType unitType, Skill skill) => BattleSkill[unitType] = skill;
 
     public void SetSelectedList(Unit unit)
@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour
     }
 
 
-    // ¹èÆ² ¸®½ºÆ® ÃÊ±âÈ­
+    // ë°°í‹€ ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”
     public void InitBattleList()
     {
         PlayerCoin.GetCoinReset();

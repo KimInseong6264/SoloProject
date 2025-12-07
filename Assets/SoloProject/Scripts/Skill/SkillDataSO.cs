@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// ·±Å¸ÀÓ Áß¿¡µµ ÃÊ±âÈ­¸¦ À§ÇÑ °ªÀ¸·Î¸¸ º¸Á¸
+// ëŸ°íƒ€ì„ ì¤‘ì—ë„ ì´ˆê¸°í™”ë¥¼ ìœ„í•œ ê°’ìœ¼ë¡œë§Œ ë³´ì¡´
 [CreateAssetMenu(fileName = "Skill", menuName = "SkillData/Skill")]
 public class SkillDataSO : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int CoinCount { get; private set; }
 
-    // ½ºÅ³ÀÇ ±âº» À§·Â
+    // ìŠ¤í‚¬ì˜ ê¸°ë³¸ ìœ„ë ¥
     [field: SerializeField] public int BasicSkillValue { get; private set; }
 
-    // ½ºÅ³ÀÇ ÄÚÀÎ°ª(ÇÕÀÇ À§·Â°ú µ¥¹ÌÁö¸¦ °áÁ¤)
+    // ìŠ¤í‚¬ì˜ ì½”ì¸ê°’(í•©ì˜ ìœ„ë ¥ê³¼ ë°ë¯¸ì§€ë¥¼ ê²°ì •)
     [field: SerializeField] public int CoinValue { get; private set; }
 
     [field: SerializeField] public float MotionTime { get; private set; }

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-// ÇÕ °ü·Ã Å¬·¡½º
+// í•© ê´€ë ¨ í´ë˜ìŠ¤
 public class ClashSystem : MonoBehaviour
 {
     private Unit _player;
@@ -10,8 +10,8 @@ public class ClashSystem : MonoBehaviour
     private Skill _playerSkill;
     private Skill _enemySkill;
 
-    // BattleSystemÀÌ ±¸µ¶
-    public event Action<UnitType> OnDamageStep;
+    // BattleSystemì´ êµ¬ë…
+    public event Action<UnitType> OnDamageStep; 
 
     private void SetBattle()
     {
@@ -27,7 +27,7 @@ public class ClashSystem : MonoBehaviour
         SetBattle();
         if (_player == null || _enemy == null)
         {
-            Debug.LogWarning("¹èÆ² ÇÒ ´ë»óÀÌ ¸íÈ®ÇÏÁö ¾Ê½À´Ï´Ù.");
+            Debug.LogWarning("ë°°í‹€ í•  ëŒ€ìƒì´ ëª…í™•í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
             return;
         }
         _player.SetState(State.Move);
@@ -37,7 +37,7 @@ public class ClashSystem : MonoBehaviour
     }
 
 
-    // ÀüÅõ ½Ã ÇÕÀÌ¶ó´Â °ÍÀ» ÁøÇà(ÄÚÀÎÅä½º·Î ½ÂºÎ °Ü·ç±â)
+    // ì „íˆ¬ ì‹œ í•©ì´ë¼ëŠ” ê²ƒì„ ì§„í–‰(ì½”ì¸í† ìŠ¤ë¡œ ìŠ¹ë¶€ ê²¨ë£¨ê¸°)
     private IEnumerator Clash()
     {
         CoinSystem player = BattleManager.Instance.PlayerCoin;
@@ -52,7 +52,7 @@ public class ClashSystem : MonoBehaviour
         ClashResult();
     }
 
-    // ÀüÅõ Á¾·á ÈÄ ÃÖÁ¾À§·Â(BaskicSkillValue + ClashPower)¿¡ µû¶ó ½ÂÀÚ °áÁ¤
+    // ì „íˆ¬ ì¢…ë£Œ í›„ ìµœì¢…ìœ„ë ¥(BaskicSkillValue + ClashPower)ì— ë”°ë¼ ìŠ¹ì ê²°ì •
     private void ClashResult()
     {
         CoinSystem player = BattleManager.Instance.PlayerCoin;
@@ -61,18 +61,18 @@ public class ClashSystem : MonoBehaviour
         int playerClash = _playerSkill.BasicSkillValue + player.ClashPower;
         int enemyClash = _enemySkill.BasicSkillValue + enemy.ClashPower;
 
-        Debug.Log($"Ä³¸¯ÅÍ: {playerClash} / ¿¡³Ê¹Ì: {enemyClash}");
+        Debug.Log($"ìºë¦­í„°: {playerClash} / ì—ë„ˆë¯¸: {enemyClash}");
 
         if (playerClash > enemyClash)
         {
             OnDamageStep?.Invoke(UnitType.Player);
-            Debug.Log($"Ä³¸¯ÅÍ ½Â");
+            Debug.Log($"ìºë¦­í„° ìŠ¹");
         }
         else if (playerClash < enemyClash)
         {
             Debug.Log(OnDamageStep);
             OnDamageStep?.Invoke(UnitType.Enemy);
-            Debug.Log("¿¡³Ê¹Ì ½Â");
+            Debug.Log("ì—ë„ˆë¯¸ ìŠ¹");
         }
         else
         {
