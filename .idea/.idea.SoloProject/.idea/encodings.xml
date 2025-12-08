@@ -4,8 +4,13 @@
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Battle/BattleManager.cs" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Battle/ClashSystem.cs" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Battle/CoinSystem.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Battle/DamageSystem.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/GameManager/GameManager.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/GameManager/InputManager.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/GameManager/UnitDataBase.cs" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Skill/Skill.cs" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Skill/SkillDataSO.cs" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/UI/ClashUI.cs" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Assets/SoloProject/Scripts/Unit/UnitDataSO.cs" charset="x-windows-949" />
   </component>
 </project>

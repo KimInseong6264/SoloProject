@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageSystem : MonoBehaviour
 {
-    // µ¥¹ÌÁö½ºÅÜ Á¾·á½Ã ¾Ë¸² ¹ß¼Û
+    // ë°ë¯¸ì§€ìŠ¤í… ì¢…ë£Œì‹œ ì•Œë¦¼ ë°œì†¡
     public event Action OnEndDamageStep;
     private void Start()
     {
@@ -21,12 +21,12 @@ public class DamageSystem : MonoBehaviour
     }
 
 
-    // ½ºÅ³ µ¥¹ÌÁö °è»ê + ¸ğ¼Ç ½ÃÀÛ
+    // ìŠ¤í‚¬ ë°ë¯¸ì§€ ê³„ì‚° + ëª¨ì…˜ ì‹œì‘
     private void GetDamageStep(UnitType unit)
     {
         Skill skill = BattleManager.Instance.BattleSkill[unit];
 
-        // ÀÌ±ä ½ºÅ³ÀÇ ¸ğ¼Ç ½ÇÇà
+        // ì´ê¸´ ìŠ¤í‚¬ì˜ ëª¨ì…˜ ì‹¤í–‰
         skill.UpateSkill();
     }
 

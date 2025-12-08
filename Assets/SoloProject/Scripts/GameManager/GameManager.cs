@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public List<UnitDataSO> SelectedPlayer { get; private set; }
 
-    // ½Ì±ÛÅæ ÆÐÅÏ
+    // ì‹±ê¸€í†¤ íŒ¨í„´
     private void Awake()
     {
         if (Instance == null)
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         SelectedPlayer.Add(DataBase.GetUnitDat(Player.Faust));
     }
 
-    // Ä³¸¯ÅÍ ¼±ÅÃ Ã¢¿¡¼­ ÀüÅõ ÃâÀü À¯´ÖÀ» ¼±ÅÃ,Ãë¼ÒÇÏ´Â ¸Þ¼­µå
+    // ìºë¦­í„° ì„ íƒ ì°½ì—ì„œ ì „íˆ¬ ì¶œì „ ìœ ë‹›ì„ ì„ íƒ,ì·¨ì†Œí•˜ëŠ” ë©”ì„œë“œ
     public void SetSelected(int index) => SelectedPlayer.Add(DataBase.GetUnitDat((Player)index));
     public void RemoveSelected(int index) => SelectedPlayer.Remove(DataBase.GetUnitDat((Player)index));
     public UnitDataSO GetSelected(int index) => SelectedPlayer[index];

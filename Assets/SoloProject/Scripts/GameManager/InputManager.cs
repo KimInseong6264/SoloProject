@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                Debug.Log("UI∏¶ ≈¨∏Ø");
+                Debug.Log("UIÎ•º ÌÅ¥Î¶≠");
                 _IsInput = false;
                 return;
             }

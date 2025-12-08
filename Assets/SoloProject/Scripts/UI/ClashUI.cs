@@ -22,7 +22,7 @@ public class ClashUI : MonoBehaviour
 
         int playerClash = system.BattleSkill[UnitType.Player].BasicSkillValue + system.PlayerCoin.ClashPower;
 
-        _playerCoin.text = "±âº» À§·Â: " + playerClash;
+        _playerCoin.text = "ê¸°ë³¸ ìœ„ë ¥: " + playerClash;
 
     }
     public void GetEnemyToss()
@@ -35,6 +35,6 @@ public class ClashUI : MonoBehaviour
         int enemyClash = system.BattleSkill[UnitType.Enemy].BasicSkillValue + system.EnemyCoin.ClashPower;
 
         CoinSystem enemyCoin = BattleManager.Instance.EnemyCoin;
-        _enemyCoin.text = "±âº» À§·Â: " + enemyClash;
+        _enemyCoin.text = "ê¸°ë³¸ ìœ„ë ¥: " + enemyClash;
     }
 }

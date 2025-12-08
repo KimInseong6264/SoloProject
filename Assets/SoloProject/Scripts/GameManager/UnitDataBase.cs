@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitDataBase : MonoBehaviour
 {
-    // SOÃß°¡ ÈÄ ¹İµå½Ã Enem¿¡µµ Ãß°¡
+    // SOì¶”ê°€ í›„ ë°˜ë“œì‹œ Enemì—ë„ ì¶”ê°€
     [SerializeField] private List<UnitDataSO> _playerList;
     [SerializeField] private List<UnitDataSO> _enemyList;
     
@@ -14,6 +14,7 @@ public class UnitDataBase : MonoBehaviour
     {
         PlayerData = new Dictionary<Player, UnitDataSO>();
         EnemyData = new Dictionary<Enemy, UnitDataSO>();
+        
         for (int i = 0; i < _playerList.Count; i++)
             PlayerData.Add((Player)i, _playerList[i]);
         for (int i = 0; i < _playerList.Count; i++)
